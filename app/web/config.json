@@ -1,0 +1,29 @@
+{
+  "app": {
+    "version": "1.0.0",
+    "title": "Homunculus",
+    "icon": "app/web/favicon.ico",
+    "renderer": "./renderer/cef-renderer.exe",
+    "port": 0
+  },
+  "user": {
+    "name": "Reisalin"
+  },
+  "variables": {
+    "package_name": "com.ftt.msleague_gl",
+    "game_pid": "",
+    "device_model": "FRIDADEV",
+    "device_id": "",
+    "storage_path": "/data/local/tmp/"
+  },
+  "paths": {
+    "adb": "app/bin/adb/adb.exe",
+    "frida_payload": "app/bin/frida/frida-server",
+    "tesseract_folder": "app/bin/tesseract",
+    "astromon_data": "app/data/astromon-db.json",
+    "astromon_families": "app/data/families-list.json",
+    "screenshot_folder": "saved/screenshots",
+    "log_folder": "saved/logs",
+    "out_folder": "saved/out"
+  }
+}

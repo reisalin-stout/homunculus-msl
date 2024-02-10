@@ -1,0 +1,32 @@
+17:15:22 - ====================================================================================================
+17:15:22 - Local server started
+17:15:22 - Local server listening at address http://127.0.0.1:55629
+17:15:22 - Application started, hello
+17:15:22 - Rendering process started
+17:15:22 - Starting rendering process
+17:15:23 - Rendering process was closed with code 0
+17:15:23 - Application will close now, goodbye
+17:15:29 - Application started, hello
+17:15:29 - ====================================================================================================
+17:15:29 - Local server started
+17:15:29 - Local server listening at address http://127.0.0.1:55631
+17:15:29 - Starting rendering process
+17:15:29 - Rendering process started
+17:15:32 - Rendering process was closed with code 0
+17:15:32 - Application will close now, goodbye
+17:15:36 - ====================================================================================================
+17:15:36 - Application started, hello
+17:15:36 - Local server started
+17:15:36 - Local server listening at address http://127.0.0.1:55634
+17:15:36 - Starting rendering process
+17:15:36 - Rendering process started
+17:15:42 - Rendering process was closed with code 0
+17:15:42 - Application will close now, goodbye
+17:15:47 - ====================================================================================================
+17:15:47 - Application started, hello
+17:15:47 - Local server started
+17:15:47 - Local server listening at address http://127.0.0.1:55638
+17:15:47 - Starting rendering process
+17:15:47 - Rendering process started
+17:15:49 - Rendering process was closed with code 0
+17:15:49 - Application will close now, goodbye

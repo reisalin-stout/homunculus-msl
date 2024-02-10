@@ -30,3 +30,153 @@
 17:15:47 - Rendering process started
 17:15:49 - Rendering process was closed with code 0
 17:15:49 - Application will close now, goodbye
+19:53:11 - Application started, hello
+19:53:11 - ====================================================================================================
+19:53:11 - Local server started
+19:53:11 - Local server listening at address http://127.0.0.1:63964
+19:53:11 - Starting rendering process
+19:53:11 - Rendering process started
+20:00:44 - ====================================================================================================
+20:00:44 - Application started, hello
+20:00:44 - Local server started
+20:00:44 - Local server listening at address http://127.0.0.1:64732
+20:00:44 - Starting rendering process
+20:00:44 - Rendering process started
+20:00:51 - Rendering process was closed with code 0
+20:00:51 - Application will close now, goodbye
+20:01:24 - ====================================================================================================
+20:01:24 - Application started, hello
+20:01:24 - Local server started
+20:01:24 - Local server listening at address http://127.0.0.1:64785
+20:01:24 - Starting rendering process
+20:01:24 - Rendering process started
+20:10:58 - ====================================================================================================
+20:10:58 - Application started, hello
+20:10:58 - Local server started
+20:10:58 - Local server listening at address http://127.0.0.1:49706
+20:10:58 - Starting rendering process
+20:10:58 - Rendering process started
+20:28:17 - Rendering process was closed with code 0
+20:28:17 - Application will close now, goodbye
+20:30:55 - ====================================================================================================
+20:30:55 - Application started, hello
+20:30:55 - Local server started
+20:30:55 - Local server listening at address http://127.0.0.1:53028
+20:30:55 - Rendering process started
+20:30:55 - Starting rendering process
+20:31:05 - Rendering process was closed with code 0
+20:31:05 - Application will close now, goodbye
+20:33:34 - ====================================================================================================
+20:33:34 - Application started, hello
+20:33:34 - Local server started
+20:33:34 - Local server listening at address http://127.0.0.1:53290
+20:33:34 - Starting rendering process
+20:33:34 - Rendering process started
+21:09:54 - ====================================================================================================
+21:09:54 - Application started, hello
+21:09:54 - Local server started
+21:09:54 - Local server listening at address http://127.0.0.1:57846
+21:09:54 - Starting rendering process
+21:09:54 - Rendering process started
+21:10:55 - Processing a request with body [object Object]
+21:10:55 - Initializing ADB
+21:10:55 - Failed to initialize ADB
+21:10:55 - logic core isn't running
+21:14:20 - Rendering process was closed with code 0
+21:14:20 - Application will close now, goodbye
+21:15:58 - ====================================================================================================
+21:15:58 - Application started, hello
+21:15:58 - Local server started
+21:15:58 - Local server listening at address http://127.0.0.1:58572
+21:15:58 - Starting rendering process
+21:15:58 - Rendering process started
+21:16:02 - Processing a request with body [object Object]
+21:16:02 - Initializing ADB
+21:16:02 - logic core isn't running
+21:16:02 - Failed to initialize ADB
+21:24:29 - Processing a request with body [object Object]
+21:24:29 - Initializing ADB
+21:24:29 - Failed to initialize ADB
+21:24:29 - logic core isn't running
+21:24:32 - Processing a request with body [object Object]
+21:24:32 - Initializing ADB
+21:24:32 - Failed to initialize ADB
+21:24:32 - logic core isn't running
+21:26:17 - Rendering process was closed with code 0
+21:26:17 - Application will close now, goodbye
+21:26:43 - Application started, hello
+21:26:43 - ====================================================================================================
+21:26:43 - Local server started
+21:26:43 - Local server listening at address http://127.0.0.1:60408
+21:26:43 - Starting rendering process
+21:26:43 - Rendering process started
+21:27:00 - Processing a request with body [object Object]
+21:27:00 - Initializing ADB
+21:27:00 - Failed to initialize ADB
+21:27:00 - logic core isn't running
+21:27:02 - Processing a request with body [object Object]
+21:27:02 - Initializing ADB
+21:27:02 - Failed to initialize ADB
+21:27:02 - logic core isn't running
+21:27:05 - Initializing ADB
+21:27:05 - Processing a request with body [object Object]
+21:27:05 - Failed to initialize ADB
+21:27:05 - logic core isn't running
+21:27:06 - Processing a request with body [object Object]
+21:27:06 - Initializing ADB
+21:27:06 - logic core isn't running
+21:27:06 - Failed to initialize ADB
+21:27:07 - Initializing ADB
+21:27:07 - Processing a request with body [object Object]
+21:27:07 - Failed to initialize ADB
+21:27:07 - logic core isn't running
+21:27:34 - Rendering process was closed with code 0
+21:27:34 - Application will close now, goodbye
+21:27:38 - ====================================================================================================
+21:27:38 - Application started, hello
+21:27:38 - Local server started
+21:27:38 - Local server listening at address http://127.0.0.1:60594
+21:27:38 - Starting rendering process
+21:27:38 - Rendering process started
+21:27:43 - Processing a request with body [object Object]
+21:27:43 - Initializing ADB
+21:27:43 - Failed to initialize ADB
+21:27:43 - logic core isn't running
+21:31:35 - Rendering process was closed with code 0
+21:31:35 - Application will close now, goodbye
+21:31:45 - ====================================================================================================
+21:31:45 - Application started, hello
+21:31:45 - Local server started
+21:31:45 - Local server listening at address http://127.0.0.1:61166
+21:31:45 - Starting rendering process
+21:31:45 - Rendering process started
+21:31:48 - Processing a request with body [object Object]
+21:31:48 - Initializing ADB
+21:31:48 - Failed to initialize ADB
+21:31:48 - ADB is error with Error: Command failed: "C:/Users/LiJie/Desktop/code/homunculus-msl/app/bin/adb/adb.exe" devices -l
+
+21:31:48 - logic core isn't running
+21:33:18 - Rendering process was closed with code 0
+21:33:18 - Application will close now, goodbye
+21:33:22 - ====================================================================================================
+21:33:22 - Application started, hello
+21:33:22 - Local server started
+21:33:22 - Local server listening at address http://127.0.0.1:61330
+21:33:22 - Starting rendering process
+21:33:22 - Rendering process started
+21:33:26 - Processing a request with body [object Object]
+21:33:26 - Initializing ADB
+21:33:26 - ADB is connected to FRIDADEV with serial emulator-5560
+21:33:27 - Game is running
+21:33:27 - Initializing Frida
+21:33:27 - Frida is now set up
+21:33:27 - Payload doesnt exist, sending it now
+21:33:31 - Payload isn't running, starting it now
+21:33:32 - Processing a request with body [object Object]
+21:33:32 - Game is running
+21:33:33 - Logic core running
+21:33:33 - trying to take screenshot
+21:33:33 - Payload running
+21:33:33 - Payload running
+21:33:33 - Logic core running
+21:33:33 - trying to take screenshot

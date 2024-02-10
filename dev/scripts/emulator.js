@@ -29,6 +29,9 @@ async function checkAdb() {
     return true;
   } catch (error) {
     adb = null;
+    log(
+      `ADB is error with ${error}`
+    );
     return false;
   }
 }

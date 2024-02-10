@@ -3,7 +3,7 @@
     "app": {
       "version": "1.0.0",
       "title": "Homunculus",
-      "icon": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/app/web/favicon.ico",
+      "icon": "C:/Users/LiJie/Desktop/code/homunculus-msl/app/web/favicon.ico",
       "renderer": "./renderer/cef-renderer.exe",
       "port": 0
     },
@@ -18,14 +18,14 @@
       "storage_path": "/data/local/tmp/"
     },
     "paths": {
-      "adb": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/app/bin/adb/adb.exe",
-      "frida_payload": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/app/bin/frida/frida-server",
-      "tesseract_folder": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/app/bin/tesseract",
-      "astromon_data": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/app/data/astromon-db.json",
-      "astromon_families": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/app/data/families-list.json",
-      "screenshot_folder": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/saved/screenshots",
-      "log_folder": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/saved/logs",
-      "out_folder": "Z:/Projects/visual-studio/MSLHacking/homunculus-msl/saved/out"
+      "adb": "C:/Users/LiJie/Desktop/code/homunculus-msl/app/bin/adb/adb.exe",
+      "frida_payload": "C:/Users/LiJie/Desktop/code/homunculus-msl/app/bin/frida/frida-server",
+      "tesseract_folder": "C:/Users/LiJie/Desktop/code/homunculus-msl/app/bin/tesseract",
+      "astromon_data": "C:/Users/LiJie/Desktop/code/homunculus-msl/app/data/astromon-db.json",
+      "astromon_families": "C:/Users/LiJie/Desktop/code/homunculus-msl/app/data/families-list.json",
+      "screenshot_folder": "C:/Users/LiJie/Desktop/code/homunculus-msl/saved/screenshots",
+      "log_folder": "C:/Users/LiJie/Desktop/code/homunculus-msl/saved/logs",
+      "out_folder": "C:/Users/LiJie/Desktop/code/homunculus-msl/saved/out"
     }
   },
   "localDB": {

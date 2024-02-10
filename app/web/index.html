@@ -3,14 +3,15 @@
   <head>
     <title>Fetch Example</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/override.css"/>
     <script src="control.js"></script>
   </head>
   <body>
     <p>Dump Memory</p>
-    <button id="adb-screenshot" onclick="command(this.id)">Screenshot</button>
-    <button id="frida-inject" onclick="command(this.id)">Inject</button>
-    <button id="find-region" onclick="command(this.id)">Find Region</button>
-    <button id="lookup" onclick="command(this.id)">Lookup</button>
+    <button class="button" id="adb-screenshot" onclick="command(this.id)">Screenshot</button>
+    <button class="button" id="frida-inject" onclick="command(this.id)">Inject</button>
+    <button class="button" id="find-region" onclick="command(this.id)">Find Region</button>
+    <button class="button" id="lookup" onclick="command(this.id)">Lookup</button>
 
     <!--<button id="memory-dump" onclick="loadFile()">Memory</button>-->
     <div id="content">MyDiv</div>

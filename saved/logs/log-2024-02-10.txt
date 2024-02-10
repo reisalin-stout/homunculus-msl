@@ -180,3 +180,192 @@
 21:33:33 - Payload running
 21:33:33 - Logic core running
 21:33:33 - trying to take screenshot
+21:38:30 - Processing a request with body [object Object]
+21:38:31 - frida started
+21:38:35 - Processing a request with body [object Object]
+21:38:35 - {"type":"response","body":"You are trying to search an astromon with these parameters: {\"uid\":\"someuid\",\"lv\":\"somelv\"}"}
+21:38:37 - Processing a request with body [object Object]
+21:38:39 - {"type":"response","body":"Astromon range is 0x7ffdff1cf000->0x7ffe0e400000 (253956096)"}
+21:54:34 - Rendering process was closed with code 0
+21:54:34 - Application will close now, goodbye
+21:54:51 - ====================================================================================================
+21:54:51 - Application started, hello
+21:54:51 - Local server started
+21:54:51 - Local server listening at address http://127.0.0.1:63736
+21:54:51 - Starting rendering process
+21:54:51 - Rendering process started
+21:55:19 - Rendering process was closed with code 0
+21:55:19 - Application will close now, goodbye
+21:55:24 - ====================================================================================================
+21:55:24 - Application started, hello
+21:55:24 - Local server started
+21:55:24 - Local server listening at address http://127.0.0.1:63792
+21:55:24 - Starting rendering process
+21:55:24 - Rendering process started
+21:55:50 - Rendering process was closed with code 0
+21:55:50 - Application will close now, goodbye
+21:55:55 - ====================================================================================================
+21:55:55 - Application started, hello
+21:55:55 - Local server started
+21:55:55 - Local server listening at address http://127.0.0.1:63851
+21:55:55 - Starting rendering process
+21:55:55 - Rendering process started
+21:57:01 - Rendering process was closed with code 0
+21:57:01 - Application will close now, goodbye
+21:57:06 - ====================================================================================================
+21:57:06 - Application started, hello
+21:57:06 - Local server listening at address http://127.0.0.1:63966
+21:57:06 - Starting rendering process
+21:57:06 - Rendering process started
+21:57:06 - Local server started
+21:58:06 - Rendering process was closed with code 0
+21:58:06 - Application will close now, goodbye
+21:58:11 - ====================================================================================================
+21:58:11 - Application started, hello
+21:58:11 - Local server started
+21:58:11 - Local server listening at address http://127.0.0.1:64086
+21:58:11 - Starting rendering process
+21:58:11 - Rendering process started
+22:01:08 - Rendering process was closed with code 0
+22:01:08 - Application will close now, goodbye
+22:01:10 - ====================================================================================================
+22:01:10 - Local server started
+22:01:10 - Local server listening at address http://127.0.0.1:64463
+22:01:10 - Starting rendering process
+22:01:10 - Rendering process started
+22:01:10 - Application started, hello
+22:01:14 - Rendering process was closed with code 0
+22:01:14 - Application will close now, goodbye
+22:01:47 - ====================================================================================================
+22:01:47 - Application started, hello
+22:01:47 - Local server started
+22:01:47 - Local server listening at address http://127.0.0.1:64532
+22:01:47 - Starting rendering process
+22:01:47 - Rendering process started
+22:02:41 - Rendering process was closed with code 0
+22:02:41 - Application will close now, goodbye
+22:02:46 - ====================================================================================================
+22:02:46 - Application started, hello
+22:02:46 - Local server started
+22:02:46 - Local server listening at address http://127.0.0.1:64642
+22:02:46 - Starting rendering process
+22:02:46 - Rendering process started
+22:02:50 - Rendering process was closed with code 0
+22:02:50 - Application will close now, goodbye
+22:08:03 - ====================================================================================================
+22:08:03 - Application started, hello
+22:08:03 - Local server started
+22:08:03 - Local server listening at address http://127.0.0.1:65210
+22:08:03 - Starting rendering process
+22:08:03 - Rendering process started
+22:08:07 - Rendering process was closed with code 0
+22:08:07 - Application will close now, goodbye
+22:08:15 - ====================================================================================================
+22:08:15 - Application started, hello
+22:08:15 - Local server started
+22:08:15 - Local server listening at address http://127.0.0.1:65223
+22:08:15 - Starting rendering process
+22:08:15 - Rendering process started
+22:08:20 - Rendering process was closed with code 0
+22:08:20 - Application will close now, goodbye
+22:10:22 - ====================================================================================================
+22:10:22 - Application started, hello
+22:10:22 - Local server started
+22:10:22 - Local server listening at address http://127.0.0.1:65437
+22:10:22 - Starting rendering process
+22:10:22 - Rendering process started
+22:12:42 - Rendering process was closed with code 0
+22:12:42 - Application will close now, goodbye
+22:12:45 - Application started, hello
+22:12:45 - ====================================================================================================
+22:12:45 - Local server started
+22:12:45 - Local server listening at address http://127.0.0.1:49305
+22:12:45 - Starting rendering process
+22:12:45 - Rendering process started
+22:12:52 - Processing a request with body [object Object]
+22:12:52 - Initializing ADB
+22:12:52 - ADB is connected to FRIDADEV with serial emulator-5560
+22:12:52 - Game is running
+22:12:52 - Initializing Frida
+22:12:52 - Frida is now set up
+22:12:53 - Payload running
+22:12:53 - Logic core running
+22:12:53 - trying to take screenshot
+22:13:18 - Rendering process was closed with code 0
+22:13:18 - Application will close now, goodbye
+22:13:33 - ====================================================================================================
+22:13:33 - Application started, hello
+22:13:33 - Local server started
+22:13:33 - Local server listening at address http://127.0.0.1:49436
+22:13:33 - Starting rendering process
+22:13:33 - Rendering process started
+22:13:38 - Processing a request with body [object Object]
+22:13:38 - Initializing ADB
+22:13:38 - ADB is connected to FRIDADEV with serial emulator-5560
+22:13:39 - Game is running
+22:13:39 - Initializing Frida
+22:13:39 - Frida is now set up
+22:13:39 - Payload running
+22:13:39 - Logic core running
+22:13:39 - trying to take screenshot
+22:13:39 - trying to take screenshot
+22:13:39 - Processing a request with body [object Object]
+22:18:27 - Rendering process was closed with code 0
+22:18:27 - Application will close now, goodbye
+22:18:42 - ====================================================================================================
+22:18:42 - Application started, hello
+22:18:42 - Local server started
+22:18:42 - Local server listening at address http://127.0.0.1:50144
+22:18:42 - Starting rendering process
+22:18:42 - Rendering process started
+22:19:09 - Rendering process was closed with code 0
+22:19:09 - Application will close now, goodbye
+22:38:21 - ====================================================================================================
+22:38:21 - Application started, hello
+22:38:21 - Local server started
+22:38:21 - Local server listening at address http://127.0.0.1:52766
+22:38:21 - Starting rendering process
+22:38:21 - Rendering process started
+22:38:29 - Processing a request with body [object Object]
+22:38:29 - Initializing ADB
+22:38:29 - Couldn't find device FRIDADEV, make sure the model name is correct
+22:38:29 - Failed to initialize ADB
+22:38:29 - logic core isn't running
+22:38:34 - Initializing ADB
+22:38:34 - Processing a request with body [object Object]
+22:38:34 - Failed to initialize ADB
+22:38:34 - Couldn't find device FRIDADEV, make sure the model name is correct
+22:38:34 - logic core isn't running
+22:38:40 - Initializing ADB
+22:38:40 - Processing a request with body [object Object]
+22:38:40 - Failed to initialize ADB
+22:38:40 - logic core isn't running
+22:38:40 - Couldn't find device FRIDADEV, make sure the model name is correct
+22:40:35 - Rendering process was closed with code 0
+22:40:35 - Application will close now, goodbye
+22:40:51 - ====================================================================================================
+22:40:51 - Application started, hello
+22:40:51 - Local server started
+22:40:51 - Local server listening at address http://127.0.0.1:53027
+22:40:51 - Starting rendering process
+22:40:51 - Rendering process started
+22:41:16 - Processing a request with body [object Object]
+22:41:16 - Initializing ADB
+22:41:16 - ADB is connected to FRIDADEV with serial emulator-5560
+22:41:17 - Game is running
+22:41:17 - Initializing Frida
+22:41:17 - Frida is now set up
+22:41:17 - Payload isn't running, starting it now
+22:41:18 - Payload running
+22:41:18 - trying to take screenshot
+22:41:18 - Logic core running
+22:41:42 - Processing a request with body [object Object]
+22:41:44 - frida started
+22:41:59 - Processing a request with body [object Object]
+22:41:59 - {"type":"response","body":"You are trying to search an astromon with these parameters: {\"uid\":\"someuid\",\"lv\":\"somelv\"}"}
+22:46:51 - Processing a request with body [object Object]
+22:46:52 - {"type":"response","body":"Astromon range is 0x7ffdfec00000->0x7ffe03c00000 (83886080)"}
+22:47:12 - Processing a request with body [object Object]
+22:47:12 - {"type":"response","body":"You are trying to search an astromon with these parameters: {\"uid\":\"someuid\",\"lv\":\"somelv\"}"}
+23:11:34 - Rendering process was closed with code 0
+23:11:34 - Application will close now, goodbye

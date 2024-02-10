@@ -64,3 +64,184 @@
 [0210/163323.509:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
 [0210/163323.509:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
 [0210/163323.677:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 117 ms
+[0210/163835.297:INFO:CONSOLE(1)] "Uncaught SyntaxError: "[object Object]" is not valid JSON", source: http://127.0.0.1:61330/ (1)
+[0210/163839.300:INFO:CONSOLE(1)] "Uncaught SyntaxError: "[object Object]" is not valid JSON", source: http://127.0.0.1:61330/ (1)
+[0210/165451.095:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/165451.538:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165451.539:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/165451.792:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 207 ms
+[0210/165451.833:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165451.833:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/165452.076:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 202 ms
+[0210/165452.118:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165452.118:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/165452.280:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 120 ms
+[0210/165452.318:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:63736/ (1)
+[0210/165524.918:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/165525.371:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165525.371:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/165525.649:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 234 ms
+[0210/165525.751:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165525.751:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/165526.036:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 232 ms
+[0210/165526.089:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165526.090:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/165526.242:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 110 ms
+[0210/165526.250:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:63792/ (1)
+[0210/165555.764:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/165556.208:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165556.208:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/165556.500:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 227 ms
+[0210/165556.577:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:63851/ (1)
+[0210/165556.592:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165556.592:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/165556.850:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 214 ms
+[0210/165556.893:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165556.893:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/165557.071:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 128 ms
+[0210/165706.841:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/165707.291:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165707.291:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/165707.550:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 219 ms
+[0210/165707.589:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165707.589:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/165707.849:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 219 ms
+[0210/165707.929:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165707.929:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/165708.095:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 120 ms
+[0210/165708.138:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:63966/ (1)
+[0210/165811.447:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/165811.970:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165811.970:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/165812.267:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 246 ms
+[0210/165812.310:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:64086/ (1)
+[0210/165812.334:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165812.334:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/165812.616:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 230 ms
+[0210/165812.660:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/165812.660:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/165812.842:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 136 ms
+[0210/170110.799:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/170111.290:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170111.290:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/170111.580:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 232 ms
+[0210/170111.620:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:64463/ (1)
+[0210/170111.639:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170111.639:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/170111.922:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 240 ms
+[0210/170111.987:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170111.987:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/170112.196:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 142 ms
+[0210/170147.849:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/170148.327:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170148.327:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/170148.603:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 224 ms
+[0210/170148.692:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170148.692:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/170148.969:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 230 ms
+[0210/170148.990:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:64532/ (1)
+[0210/170149.029:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170149.030:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/170149.208:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 133 ms
+[0210/170246.882:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/170247.345:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170247.345:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/170247.621:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 231 ms
+[0210/170247.666:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170247.666:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/170247.944:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 228 ms
+[0210/170248.003:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170248.003:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/170248.184:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 132 ms
+[0210/170248.281:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:64642/ (1)
+[0210/170803.922:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/170804.452:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170804.452:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/170804.737:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 214 ms
+[0210/170804.799:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:65210/ (1)
+[0210/170804.813:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170804.813:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/170805.092:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 235 ms
+[0210/170805.143:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170805.143:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/170805.322:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 121 ms
+[0210/170815.585:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/170815.995:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170815.995:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/170816.281:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 238 ms
+[0210/170816.363:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170816.363:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/170816.658:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 241 ms
+[0210/170816.665:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:65223/ (1)
+[0210/170816.701:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/170816.701:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/170816.857:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 117 ms
+[0210/171022.837:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/171023.268:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171023.268:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/171023.557:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 245 ms
+[0210/171023.637:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171023.637:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/171023.928:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 240 ms
+[0210/171023.979:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:65437/ (1)
+[0210/171023.986:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171023.986:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/171024.191:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 131 ms
+[0210/171245.855:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/171246.279:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171246.279:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/171246.526:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 206 ms
+[0210/171246.566:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171246.566:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/171246.825:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 212 ms
+[0210/171246.874:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171246.874:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/171247.028:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 115 ms
+[0210/171247.046:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:49305/ (1)
+[0210/171333.861:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/171334.289:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171334.289:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/171334.546:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 211 ms
+[0210/171334.596:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171334.596:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/171334.841:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 205 ms
+[0210/171334.846:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:49436/ (1)
+[0210/171334.877:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171334.877:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/171335.015:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 101 ms
+[0210/171842.225:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/171842.681:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171842.681:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/171842.962:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 239 ms
+[0210/171843.009:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171843.009:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/171843.254:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 206 ms
+[0210/171843.294:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/171843.294:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/171843.447:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 116 ms
+[0210/171843.503:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:50144/ (1)
+[0210/173821.697:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/173822.195:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/173822.195:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/173822.469:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 228 ms
+[0210/173822.527:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/173822.527:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/173822.790:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 215 ms
+[0210/173822.831:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/173822.831:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/173822.984:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 114 ms
+[0210/173823.034:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:52766/ (1)
+[0210/174051.158:WARNING:resource_util.cc(94)] Please customize CefSettings.root_cache_path for your application. Use of the default value may lead to unintended process singleton behavior.
+[0210/174051.577:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/174051.577:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 1 time(s)
+[0210/174051.814:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 199 ms
+[0210/174051.857:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/174051.857:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 2 time(s)
+[0210/174052.133:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 237 ms
+[0210/174052.148:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token 'C', "Connected" is not valid JSON", source: http://127.0.0.1:53027/ (1)
+[0210/174052.192:ERROR:gpu_process_host.cc(992)] GPU process exited unexpectedly: exit_code=-2147483645
+[0210/174052.192:WARNING:gpu_process_host.cc(1362)] The GPU process has crashed 3 time(s)
+[0210/174052.366:WARNING:gpu_process_host.cc(1015)] Reinitialized the GPU process after a crash. The reported initialization time was 129 ms
+[0210/174200.179:INFO:CONSOLE(1)] "Uncaught SyntaxError: "[object Object]" is not valid JSON", source: http://127.0.0.1:53027/ (1)
+[0210/174653.267:INFO:CONSOLE(1)] "Uncaught SyntaxError: "[object Object]" is not valid JSON", source: http://127.0.0.1:53027/ (1)
+[0210/174713.271:INFO:CONSOLE(1)] "Uncaught SyntaxError: "[object Object]" is not valid JSON", source: http://127.0.0.1:53027/ (1)

@@ -1,3 +1,4 @@
 node_modules/
 app/bin/frida/*
 renderer/libcef.dll
+renderer/cef_sandbox.lib

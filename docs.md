@@ -1,0 +1,10 @@
+- API
+  - GET
+    - adb-check
+  - POST
+    - adb-screenshot
+    - adb-frida-inject
+- Assumptions
+  - Active Memory Region is always BEFORE Backup (?) Memory Region
+- Inject API
+  - find-region

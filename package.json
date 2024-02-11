@@ -11,7 +11,8 @@
   "scripts": {
     "start": "node .",
     "build": "pkg --target latest-win-x64 main.js --config package.json --output Homunculus",
-    "buildscript": "node packager.js"
+    "buildscript": "node packager.js",
+    "update": "npm install && node updater.js"
   },
   "pkg": {
     "assets": "dev/**/*"
@@ -23,6 +24,7 @@
     "express": "^4.18.2",
     "frida": "^16.1.11",
     "jimp": "^0.22.10",
+    "tar": "^6.2.0",
     "tesseract.js": "^5.0.4"
   }
 }

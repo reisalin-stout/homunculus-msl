@@ -1,7 +1,7 @@
 const express = require("express");
 const { spawn } = require("child_process");
-const { logic, tick } = require("./dev/scripts/logic.js");
-const { initialize, log, MessageHandler } = require("./dev/scripts/system.js");
+const { logic, tick } = require("./dev/logic.js");
+const { initialize, log, MessageHandler } = require("./dev/system.js");
 
 function render() {
   log("Starting rendering process");

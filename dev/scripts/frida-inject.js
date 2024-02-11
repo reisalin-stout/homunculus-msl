@@ -43,12 +43,9 @@ class AstromonRegion {
   validate() {
     const conditions = [
       { field: "level", min: 1, max: 60, type: "v_dword", distance: 1 },
-      { field: "atk", min: 1, max: 6000, type: "v_float", distance: 2 },
-      { field: "def", min: 1, max: 6000, type: "v_float", distance: 3 },
-      { field: "rec", min: 1, max: 6000, type: "v_float", distance: 4 },
-      { field: "ascension", min: 1, max: 6, type: "v_dword", distance: 20 },
-      { field: "skillbook_p", min: 0, max: 4, type: "v_dword", distance: 35 },
-      { field: "skillbook_a", min: 0, max: 4, type: "v_dword", distance: 36 },
+      { field: "atk", min: 1.0, max: 6000.0, type: "v_float", distance: 2 },
+      { field: "def", min: 1.0, max: 6000.0, type: "v_float", distance: 3 },
+      { field: "rec", min: 1.0, max: 6000.0, type: "v_float", distance: 4 },
     ];
     for (const condition of conditions) {
       const fieldValue = this.readline(condition.distance, condition.type);
@@ -154,22 +151,6 @@ function searchMemory() {
   });
 }
 
-async function processMemory(currentAddress) {}
-
-const astromonTable = {
-  id: 0,
-  level: 1,
-  atk: 2,
-  def: 3,
-  rec: 4,
-  hp: 7,
-  variant_t: 9,
-  ascension: 20,
-  variant_l: 28,
-  skillbook_p: 35,
-  skillbook_a: 36,
-};
-
 function field(baseAddress, size) {
   var customObject = {};
   Object.keys(astromonTable).forEach(async (key) => {
@@ -179,63 +160,37 @@ function field(baseAddress, size) {
   return customObject;
 }
 
-let astromonRange;
+function scanner() {
+  const allRanges = Process.enumerateRanges("r--");
+  let msgRanges = new MessageHandler("response", `Ranges: ${allRanges.length}`);
+  msgRanges.sendMessage();
+  for (let r = 0; r < allRanges.length; r++) {
+    let check = new MessageHandler(
+      "response",
+      `Scanning range ${allRanges[r].base}`
+    );
+    check.sendMessage();
+    for (let u = 0; u < allUid.length; u++) {
+      let uid = toHex32(allUid[u], TYPE.DWORD);
 
-async function scanner(uid) {
-  const newUid = toHex32(uid, TYPE.DWORD);
-
-  //  send(`Searching for uid: ${uid}, hex: ${newUid}`);
-  const ranges = Process.enumerateRanges("r--");
-  let process = true;
-  ranges.forEach((range) => {
-    if (!process) {
-      return;
-    }
-    Memory.scan(range.base, range.size, newUid, {
-      onMatch: function (address, size) {
-        const astromon = new AstromonRegion(address, 10);
-        if (astromon.isValid) {
-          if (process) {
-            process = false;
-            astromonRange = range;
-          }
-
-          send({
-            message: `found monster at ${address} in range ${
-              range.base
-            } -> ${range.base.add(range.size)} of size ${range.size}`,
-            data: astromon.memory,
-          });
+      let foundAstromons = Memory.scanSync(
+        allRanges[r].base,
+        allRanges[r].size,
+        uid
+      );
+      if (foundAstromons.length != 0) {
+        let notice = new MessageHandler("response", `Found uid ${allUid[u]}`);
+        notice.sendMessage();
+        for (let a = 0; a < foundAstromons.length; a++) {
+          //const astromon = new AstromonRegion(foundAstromons[a], 5);
+          let handled = new MessageHandler("response", "true");
+          handled.sendMessage();
         }
-        /*
-
-          send(
-            `==================== ${
-              range.size > 110925440 ? "Possible Match" : "Doubtful"
-            } ====================
-            Range is ${range.base} -> ${range.base.add(range.size)} Size: ${
-              range.size
-            } (${
-              typeof range.file === "undefined" ? "undefined" : range.file.path
-            })
-            Found Monster at ${address} with UID: ${uid}
-            Data: 
-            ${total}
-            }`
-          );*/
-      },
-      onError: function (reason) {},
-      onCompleted: function () {
-        send(
-          `The right memory region should be ${
-            astromonRange.base
-          }->${astromonRange.base.add(astromonRange.size)} (${
-            astromonRange.size
-          })`
-        );
-      },
-    });
-  });
+      }
+    }
+  }
+  let end = new MessageHandler("response", `Finished scanning ranges`);
+  end.sendMessage();
 }
 
 function memoryLine(baseAddress, distance) {
@@ -284,35 +239,49 @@ function dumpregion() {
   });
 }
 
-let astromonDataRange = null;
-
 function findAstromonRange() {
-  if (astromonDataRange === null) {
-    const ranges = Process.enumerateRanges("r--");
-    let found = false;
-    for (let u = 0; u < allUid.length; u++) {
-      const uid = toHex32(allUid[u], TYPE.DWORD);
-      if (found) {
-        break;
-      }
-      for (let i = 0; i < ranges.length; i++) {
-        const range = ranges[i];
-        if (found) {
-          break;
+  const ranges = Process.enumerateRanges("r--");
+  const uid = toHex32(1707790755, TYPE.DWORD);
+  for (let i = 0; i < ranges.length; i++) {
+    const range = ranges[i];
+    try {
+      const result = Memory.scanSync(range.base, range.size, uid);
+      if (result.length > 0) {
+        for (let r = 0; r < result.length; r++) {
+          const pointer = result[r].address;
+          const lv = Memory.readU32(pointer.add(4));
+          const atk = Math.round(Memory.readFloat(pointer.add(8)));
+          const def = Math.round(Memory.readFloat(pointer.add(12)));
+          const rec = Math.round(Memory.readFloat(pointer.add(16)));
+          const bool = Memory.readU32(pointer.add(20));
+          if (lv == 16 && atk == 460 && def == 541 && rec == 514 && bool == 0) {
+            let end = new MessageHandler(
+              "response",
+              `Found in range ${range.base} at address ${pointer}`
+            );
+            end.sendMessage();
+            const target = 837963264;
+            if (pointer.add(232).readU32() == target) {
+              pointer.add(8).writeFloat(99999);
+            }
+            const other = 816351360;
+            if (pointer.add(232).readU32() == other) {
+              pointer.add(8).writeFloat(12345);
+            }
+            let linx = [];
+            for (let i = -10; i < 61; i++) {
+              linx.push(memoryLine(pointer.add(i * 4), i * 4));
+            }
+            let astr = new MessageHandler("response", linx);
+            astr.sendMessage();
+          }
         }
-
-        const result = Memory.scanSync(range.base, range.size, uid);
-        if (result.length > 0) {
-          found = true;
-          astromonDataRange = range;
-        }
       }
-    }
-    if (!found) {
-      return false;
+    } catch (error) {
+      let err = new MessageHandler("response", `some error: ${error}`);
+      err.sendMessage();
     }
   }
-
   return true;
 }
 
@@ -325,22 +294,15 @@ function receiver(control) {
   let response = new MessageHandler("response");
   switch (control.type) {
     case "find-region":
-      let rangeFound = findAstromonRange();
-      response.body = rangeFound
-        ? `Astromon range is ${
-            astromonDataRange.base
-          }->${astromonDataRange.base.add(astromonDataRange.size)} (${
-            astromonDataRange.size
-          })`
-        : "Range was not found";
-
+      findAstromonRange();
       break;
     case "find-astromon":
-      response.body = `You are trying to search an astromon with these parameters: ${control.body}`;
+      response.body = `Dumping all Astromons`;
+      response.sendMessage();
+      scanner();
 
       break;
   }
-  response.sendMessage();
 
   recv("control", function onMessage(controlMsg) {
     let handled = new MessageHandler(

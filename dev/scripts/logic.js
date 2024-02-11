@@ -51,13 +51,13 @@ async function logic(message) {
 // Other functions
 
 function handler(data) {
-  if (Array.isArray(data)) {
+  /*  if (Array.isArray(data)) {
     lines.push(...data);
   } else {
     lines.push(data);
   }
-
-  log(JSON.stringify(data));
+*/
+  log(JSON.stringify(data.body));
 }
 
 async function tick() {

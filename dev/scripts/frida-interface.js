@@ -22,6 +22,7 @@ class FridaInterface {
       await this.script.load();
       this.ready = true;
       this.script.message.connect((data) => {
+        console.log(data);
         handler(data.payload);
       });
     } catch (error) {

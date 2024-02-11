@@ -1,4 +1,6 @@
+const { create } = require("domain");
 const fs = require("fs");
+const fsp = require("fs/promises");
 const https = require("https");
 const { c, x, list } = require("tar");
 
@@ -60,7 +62,28 @@ function listFiles(folder) {
   return files;
 }
 
-fs.readFile("update-list.json", (err, data) => {
+async function createFolders(paths) {
+  for (const path of paths) {
+    try {
+      await fsp.mkdir(path, { recursive: true });
+      console.log(`Folder created: ${path}`);
+    } catch (error) {
+      console.log(`Error creating folder: ${path}`, error);
+    }
+  }
+}
+
+const folders = [
+  "app/bin",
+  "saved",
+  "saved/logs",
+  "saved/out",
+  "saved/screenshots",
+  "saved/tmp",
+];
+
+fs.readFile("update-list.json", async (err, data) => {
+  await createFolders(folders);
   const list = JSON.parse(data);
   Object.keys(list).forEach((nameFile) => {
     download(

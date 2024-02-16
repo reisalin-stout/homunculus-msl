@@ -54,7 +54,6 @@ class AdbInterface {
   async findDeviceByModel(modelName) {
     const deviceArray = await this.listDevices();
     for (const device in deviceArray) {
-      console.log(deviceArray[device]);
       const logger = await this.adbCommand(
         `-s ${deviceArray[device]} shell getprop ro.product.model`
       );
@@ -77,7 +76,6 @@ class AdbInterface {
 
       if (relativeLine) {
         const pid = relativeLine.trim().split(/\s+/)[1];
-        console.log(`Process ${processName} is running with PID: ${pid}`);
         return parseInt(pid, 10);
       } else {
         console.log(`Process ${processName} is not running`);
@@ -168,7 +166,6 @@ class AdbInterface {
           const pid = await this.getPidByName(processName);
 
           if (pid !== null && !isNaN(pid)) {
-            console.log(`Process ${processName} is running with PID: ${pid}`);
             resolve(parseInt(pid, 10));
           } else if (elapsedTime >= timeout) {
             throw new Error(

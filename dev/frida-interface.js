@@ -9,6 +9,8 @@ class FridaInterface {
     this.session = null;
     this.script = null;
     this.ready = false;
+
+    this.queue = [];
   }
 
   async start(scriptPath, handler) {
@@ -21,9 +23,9 @@ class FridaInterface {
       this.script = await this.session.createScript(code);
       await this.script.load();
       this.ready = true;
-      this.script.message.connect((data) => {
-        console.log(data);
-        handler(data.payload);
+      this.script.message.connect(async (data) => {
+        let response = await this.receive(data.payload);
+        handler(response);
       });
     } catch (error) {
       throw error;
@@ -32,6 +34,10 @@ class FridaInterface {
 
   async send(data) {
     this.script.post({ type: "control", body: data });
+  }
+
+  async receive(data) {
+    return new Promise();
   }
 }
 

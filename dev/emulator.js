@@ -29,9 +29,7 @@ async function checkAdb() {
     return true;
   } catch (error) {
     adb = null;
-    log(
-      `ADB is error with ${error}`
-    );
+    log(`ADB is error with ${error}`);
     return false;
   }
 }
@@ -53,6 +51,9 @@ async function checkGame(timeout = 5000) {
       );
     }
     global.MSLEAGUE.config.variables.game_pid = gamePid;
+    console.log(
+      `Process ${global.MSLEAGUE.config.variables.package_name} is running with PID: ${gamePid}`
+    );
 
     return true;
   } catch (error) {
@@ -89,6 +90,8 @@ async function checkFrida() {
       isFridaRunning = await adb.executeFile(payloadPath);
     }
     log("Payload running");
+    const fridaPid = await adb.getPidByName("frida-server");
+    console.log(`Process frida-server is running with PID: ${fridaPid}`);
     return isFridaRunning;
   } catch (error) {
     frida = null;

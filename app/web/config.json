@@ -4,7 +4,8 @@
     "title": "Homunculus",
     "icon": "app/web/favicon.ico",
     "renderer": "./renderer/cef-renderer.exe",
-    "port": 0
+    "port": 0,
+    "refresh": 200
   },
   "user": {
     "name": "Reisalin"

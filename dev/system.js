@@ -1,13 +1,16 @@
 const fsp = require("fs/promises");
 
 class MessageHandler {
-  constructor(msgType = "message", msgBody = null) {
-    this.type = msgType;
-    this.body = msgBody;
+  constructor({ type = "type", body = "body" } = {}) {
+    this.type = type;
+    this.body = body;
   }
 
-  get() {
+  asDictionary() {
     return { type: this.type, body: this.body };
+  }
+  toString() {
+    return `Type: ${this.type} - Body: ${this.body}`;
   }
 }
 
@@ -123,6 +126,7 @@ async function log(message) {
     const timestamp = data[1].split(".")[0];
     const filePath = global.MSLEAGUE.config.paths.log_folder + logname;
     const newLine = `${timestamp} - ${message}\n`;
+    console.log(newLine.trim());
     await fsp.appendFile(filePath, newLine);
   } catch (error) {}
 }

@@ -1,71 +1,113 @@
-//Memory Functions
-
-class MessageHandler {
-  constructor(msgType = "message", msgBody = null) {
-    this.type = msgType;
-    this.body = msgBody;
-  }
-
-  sendMessage() {
-    send({ type: this.type, body: this.body });
+/*
+class MemoryLine {
+  constructor(mem, { offset = 0, size = 4 } = {}) {
+    this.size = size;
+    this.offset = offset;
+    this.pointer = mem.address.add(this.size * this.offset);
+    this.m_dword = this.pointer.readU32();
+    this.m_float = this.pointer.readFloat();
+    this.m_float_round = Math.round(this.pointer.readFloat());
   }
 }
+*/
 
-class AstromonRegion {
-  constructor(baseAddress, size) {
-    this.start = baseAddress;
-    this.memsize = 4;
-    this.end = size;
-    this.memory = [];
-    this.isValid = this.validate();
-    if (this.isValid) {
-      for (let c = 0; c <= this.end; c++) {
-        let add = this.start.add(c * 4);
-        let line = {
-          address: add,
-          v_dword: Memory.readU32(add),
-          v_float: Memory.readFloat(add),
-        };
-        this.memory[c] = JSON.stringify(line);
+class Astromon {
+  constructor(start) {
+    this.start = start;
+    this.offsets = {
+      id: this.point(0, TYPE.DWORD),
+      user_id: this.point(2, TYPE.DWORD),
+      monster_uid: this.point(4, TYPE.DWORD),
+      level: this.point(5, TYPE.DWORD),
+      attack: this.point(6, TYPE.FLOAT),
+      defense: this.point(7, TYPE.FLOAT),
+      recovery: this.point(8, TYPE.FLOAT),
+      hp: this.point(10, TYPE.DOUBLE),
+      stat_type: this.point(12, TYPE.DWORD),
+      variant: this.point(13, TYPE.DWORD),
+      exp: this.point(14, TYPE.DWORD),
+      gem_1_shape: this.point(15, TYPE.DWORD),
+      gem_2_shape: this.point(16, TYPE.DWORD),
+      gem_3_shape: this.point(17, TYPE.DWORD),
+      gem_1_id: this.point(18, TYPE.DWORD),
+      gem_2_id: this.point(20, TYPE.DWORD),
+      gem_3_id: this.point(22, TYPE.DWORD),
+      grade: this.point(24, TYPE.DWORD),
+      lock: this.point(25, TYPE.BOOL),
+
+      somepointer: this.point(48, TYPE.ADDR),
+    };
+  }
+  get isValid() {
+    const conditions = {
+      level: { min: 0, max: 60 },
+      attack: { min: 0, max: 6000 },
+      defense: { min: 0, max: 6000 },
+      recovery: { min: 0, max: 6000 },
+      hp: { min: 0, max: 60000 },
+      variant: { min: 1, max: 2 },
+      gem_1_shape: { min: 1, max: 3 },
+      gem_2_shape: { min: 1, max: 3 },
+      gem_3_shape: { min: 1, max: 3 },
+      grade: { min: 1, max: 9 },
+    };
+    for (const property in conditions) {
+      if (this.offsets.hasOwnProperty(property)) {
+        const value = this.offsets[property];
+        const condition = conditions[property];
+        if (
+          typeof value === "number" &&
+          value >= condition.min &&
+          value <= condition.max
+        ) {
+          continue;
+        } else {
+          return false;
+        }
       }
     }
-  }
 
-  readline(offset, type) {
-    switch (type) {
-      case "v_dword":
-        return Memory.readU32(this.start.add(offset * this.memsize));
-      case "v_float":
-        return Memory.readFloat(this.start.add(offset * this.memsize));
-    }
-  }
-
-  validate() {
-    const conditions = [
-      { field: "level", min: 1, max: 60, type: "v_dword", distance: 1 },
-      { field: "atk", min: 1.0, max: 6000.0, type: "v_float", distance: 2 },
-      { field: "def", min: 1.0, max: 6000.0, type: "v_float", distance: 3 },
-      { field: "rec", min: 1.0, max: 6000.0, type: "v_float", distance: 4 },
-    ];
-    for (const condition of conditions) {
-      const fieldValue = this.readline(condition.distance, condition.type);
-      if (fieldValue < condition.min || fieldValue > condition.max) {
-        return false;
-      }
-    }
     return true;
+  }
+
+  point(offset, type) {
+    let target = this.start.add(offset * 4);
+    let result;
+    switch (type) {
+      case TYPE.DWORD:
+        result = target.readU32();
+        break;
+      case TYPE.FLOAT:
+        result = target.readFloat();
+        break;
+      case TYPE.ADDR:
+        result = `${target.readPointer().toString()}`;
+        break;
+      case TYPE.DOUBLE:
+        result = target.readDouble();
+        break;
+      case TYPE.QWORD:
+        result = target.readU64();
+        break;
+      case TYPE.BOOL:
+        result = target.readU32() == 1 ? true : false;
+    }
+    return result;
   }
 }
 
 const TYPE = {
   DWORD: 0,
   FLOAT: 1,
+  ADDR: 2,
+  DOUBLE: 3,
+  QWORD: 4,
+  BOOL: 5,
 };
 
 function toHex32(value, type, littleEndian = true) {
   const buffer = new ArrayBuffer(4);
   const dataView = new DataView(buffer);
-
   switch (type) {
     case 0:
       dataView.setUint32(0, value, littleEndian);
@@ -74,242 +116,66 @@ function toHex32(value, type, littleEndian = true) {
       dataView.setFloat32(0, value, littleEndian);
       break;
   }
-
   const hexValue = dataView
     .getUint32(0, littleEndian)
     .toString(16)
     .toUpperCase()
     .padStart(8, "0");
-
   const formattedValue = hexValue.match(/.{2}/g).reverse().join(" ");
-
   return formattedValue;
 }
 
-const targetValue = toHex32(1505529000, TYPE.DWORD);
-let searchComplete = false; // Flag to track if memory search is complete
-
-function searchMemory() {
-  send(`Searching for hex value: ${targetValue}`);
-  const ranges = Process.enumerateRanges("r--");
-  ranges.forEach((range) => {
-    Memory.scan(range.base, range.size, targetValue, {
-      onMatch: function (address, size) {
-        send(`Found Match at address ${address}`);
-        // Calculate the next address based on the size of the first match
-        const nextAddress = address.add(size);
-
-        // Check if the next address is within a valid range
-        if (
-          nextAddress.compare(ptr(0)) === -1 ||
-          nextAddress > range.base.add(range.size)
-        ) {
-          send(`Invalid next address: ${nextAddress}`);
-          return;
-        }
-
-        // Read the DWORD at the next address
-        let nextDword;
-        try {
-          nextDword = Memory.readU32(nextAddress);
-        } catch (readError) {
-          send(`Error reading next DWORD at ${nextAddress}: ${readError}`);
-          return;
-        }
-
-        // Print information about the first match
-
-        // Check if the next DWORD matches the inputted value
-        if (61 > nextDword && nextDword > 0) {
-          send(
-            `======================================================================`
-          );
-          send(`Found at address: ${address}`);
-          send(`Size: ${size}`);
-          send(`Next address: ${nextAddress}`);
-          send(`Next DWORD value: ${nextDword}`);
-
-          send("Next DWORD matches the inputted value. Changing value to 20.");
-
-          // Write the new value (20) to the next address
-          try {
-            Memory.writeU32(address, 1505529000);
-            Memory.writeU32(nextAddress, 60);
-            send("Value changed successfully.");
-          } catch (writeError) {
-            send(`Error writing new value at ${nextAddress}: ${writeError}`);
-          }
-        }
-      },
-      onError: function (reason) {
-        send(`Error during memory scan: ${reason}`);
-      },
-      onCompleted: function () {
-        send("Function Completed");
-      },
-    });
-  });
-}
-
-function field(baseAddress, size) {
-  var customObject = {};
-  Object.keys(astromonTable).forEach(async (key) => {
-    var data = baseAddress.add(astromonTable[key] * size);
-    customObject[key] = data;
-  });
-  return customObject;
-}
-
-function scanner() {
-  const allRanges = Process.enumerateRanges("r--");
-  let msgRanges = new MessageHandler("response", `Ranges: ${allRanges.length}`);
-  msgRanges.sendMessage();
-  for (let r = 0; r < allRanges.length; r++) {
-    let check = new MessageHandler(
-      "response",
-      `Scanning range ${allRanges[r].base}`
-    );
-    check.sendMessage();
-    for (let u = 0; u < allUid.length; u++) {
-      let uid = toHex32(allUid[u], TYPE.DWORD);
-
-      let foundAstromons = Memory.scanSync(
-        allRanges[r].base,
-        allRanges[r].size,
-        uid
-      );
-      if (foundAstromons.length != 0) {
-        let notice = new MessageHandler("response", `Found uid ${allUid[u]}`);
-        notice.sendMessage();
-        for (let a = 0; a < foundAstromons.length; a++) {
-          //const astromon = new AstromonRegion(foundAstromons[a], 5);
-          let handled = new MessageHandler("response", "true");
-          handled.sendMessage();
-        }
-      }
-    }
-  }
-  let end = new MessageHandler("response", `Finished scanning ranges`);
-  end.sendMessage();
-}
-
-function memoryLine(baseAddress, distance) {
-  const dword = Memory.readU32(baseAddress);
-  const flot = Math.round(Memory.readFloat(baseAddress));
-  const parse = `${flot}`;
-  const resu = parse.includes("e+") ? "N" : flot;
-  const strt = `${distance}-${baseAddress}-${dword}-${resu}\n`;
-  return strt;
-}
-
-// Execute the memory search
-
-function dumpregion() {
-  send(`Dumping Memory\n`);
-  const sizeRef = 163405824;
-  const ranges = Process.enumerateRanges("r--");
-  ranges.forEach((range) => {
-    if (range.size == sizeRef) {
-      /*
-      send(
-        `Dumping range ${range.base} -> ${range.base.add(range.size)} of size ${
-          range.size
-        }\n`
-      );*/
-      const address = range.base;
-      const delimiter = 100;
-      var counter = 0;
-      var msg = "";
-      for (let offset = 0; offset < range.size; offset += 4) {
-        const currentAddress = address.add(offset);
-        const str = memoryLine(currentAddress, offset);
-        counter++;
-        msg += str;
-        if (counter >= delimiter) {
-          send(msg);
-          counter = 0;
-          msg = "";
-        }
-      }
-      if (msg.length > 0) {
-        send(msg);
-      }
-      send("Dump completed");
-    }
-  });
-}
-
-function findAstromonRange() {
-  const ranges = Process.enumerateRanges("r--");
-  const uid = toHex32(1707790755, TYPE.DWORD);
+function findAllMonstersByUserId() {
+  const ranges = Process.enumerateRanges({ protection: "rw-", coalesce: true });
+  const user_id = toHex32(7901126, TYPE.DWORD);
+  let unique_results = [];
   for (let i = 0; i < ranges.length; i++) {
     const range = ranges[i];
-    try {
-      const result = Memory.scanSync(range.base, range.size, uid);
-      if (result.length > 0) {
-        for (let r = 0; r < result.length; r++) {
-          const pointer = result[r].address;
-          const lv = Memory.readU32(pointer.add(4));
-          const atk = Math.round(Memory.readFloat(pointer.add(8)));
-          const def = Math.round(Memory.readFloat(pointer.add(12)));
-          const rec = Math.round(Memory.readFloat(pointer.add(16)));
-          const bool = Memory.readU32(pointer.add(20));
-          if (lv == 16 && atk == 460 && def == 541 && rec == 514 && bool == 0) {
-            let end = new MessageHandler(
-              "response",
-              `Found in range ${range.base} at address ${pointer}`
-            );
-            end.sendMessage();
-            const target = 837963264;
-            if (pointer.add(232).readU32() == target) {
-              pointer.add(8).writeFloat(99999);
-            }
-            const other = 816351360;
-            if (pointer.add(232).readU32() == other) {
-              pointer.add(8).writeFloat(12345);
-            }
-            let linx = [];
-            for (let i = -10; i < 61; i++) {
-              linx.push(memoryLine(pointer.add(i * 4), i * 4));
-            }
-            let astr = new MessageHandler("response", linx);
-            astr.sendMessage();
-          }
+
+    const result = Memory.scanSync(range.base, range.size, user_id);
+    if (result.length > 0) {
+      for (let r = 0; r < result.length; r++) {
+        let uid_address = result[r].address.add(8).readU32();
+        if (allUid.includes(uid_address)) {
+          unique_results.push(result[r].address.sub(8));
         }
       }
-    } catch (error) {
-      let err = new MessageHandler("response", `some error: ${error}`);
-      err.sendMessage();
     }
   }
-  return true;
+  let astromon_inventory = [];
+  for (let a = 0; a < unique_results.length; a++) {
+    const starting_address = unique_results[a];
+    let astromon = new Astromon(starting_address);
+    if (astromon.isValid) {
+      astromon_inventory.push(astromon.offsets);
+    }
+  }
+  send({
+    type: "found-astromon",
+    body: `Found a total of ${unique_results.length} valid astromons`,
+  });
+  send({ type: "astromon-inventory", body: astromon_inventory });
 }
 
-recv("control", function onMessage(controlMsg) {
-  let handled = new MessageHandler(controlMsg.body.type, controlMsg.body.body);
-  receiver(handled);
+recv("control", (message) => {
+  receiver(message.body);
 });
-
 function receiver(control) {
-  let response = new MessageHandler("response");
   switch (control.type) {
     case "find-region":
-      findAstromonRange();
+      try {
+        findAllMonstersByUserId();
+      } catch (error) {
+        send({ type: "response", body: `Some error: ${error.message}` });
+      }
       break;
-    case "find-astromon":
-      response.body = `Dumping all Astromons`;
-      response.sendMessage();
-      scanner();
-
+    case "external-command":
+      eval(control.body);
       break;
   }
 
-  recv("control", function onMessage(controlMsg) {
-    let handled = new MessageHandler(
-      controlMsg.body.type,
-      controlMsg.body.body
-    );
-    receiver(handled);
+  recv("control", (message) => {
+    receiver(message.body);
   });
 }
 

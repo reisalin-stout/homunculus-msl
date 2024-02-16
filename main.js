@@ -1,7 +1,27 @@
 const express = require("express");
 const { spawn } = require("child_process");
-const { logic, tick } = require("./dev/logic.js");
-const { initialize, log, MessageHandler } = require("./dev/system.js");
+const { logic, tick, start, respondToClient } = require("./dev/logic.js");
+const { initialize, log } = require("./dev/system.js");
+
+let messageIds = [];
+
+function newId() {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  while (true) {
+    let result = "";
+    for (let i = 0; i < 8; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+    if (!messageIds.includes(result)) {
+      messageIds.push(result);
+      break;
+    }
+  }
+  return result;
+}
 
 function render() {
   log("Starting rendering process");
@@ -22,19 +42,19 @@ function render() {
 async function main() {
   try {
     await initialize();
-    log(
-      "===================================================================================================="
-    );
+    log("================================");
     log("Application started, hello");
     const app = express();
     log("Local server started");
     app.use(express.static("./app/web"));
+    app.use(express.static("./app/data"));
     app.use(express.json());
 
+    await start();
+
     app.post("/app-controller", async (req, res) => {
-      log(`Processing a request with body ${req.body}`);
-      const msg = new MessageHandler(req.body.type, req.body.body);
-      const responseMessage = await logic(msg);
+      res.setHeader("Content-Type", "application/json");
+      const responseMessage = await logic(newId(), req.body);
       res.send(responseMessage);
     });
 
@@ -42,17 +62,20 @@ async function main() {
       res.setHeader("Content-Type", "text/event-stream");
       res.setHeader("Cache-Control", "no-cache");
       res.setHeader("Connection", "keep-alive");
-
-      res.write("data: Connected\n\n");
-
+      res.write(`data: "Connected"\n\n`);
+      respondToClient = (data) => {
+        res.write(`data: ${data}\n`);
+      };
+      /*
       const intervalId = setInterval(() => {
         (async () => {
           const data = await tick();
-          const eventData = `data: ${data}\n\n`;
-          res.write(eventData);
+          if (data != false) {
+            res.write(`data: ${data}\n`);
+          }
         })();
-      }, 1000);
-
+      }, global.MSLEAGUE.config.app.refresh);
+      */
       req.on("close", () => {
         clearInterval(intervalId);
       });

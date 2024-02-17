@@ -10,10 +10,11 @@ class FridaInterface {
     this.script = null;
     this.ready = false;
 
-    this.queue = [];
+    this.queue = {};
+    this.ids = [];
   }
 
-  async start(scriptPath, handler) {
+  async start(scriptPath) {
     try {
       const code = fs.readFileSync(scriptPath).toString();
       this.device = await frida.getDevice(this.device_id);
@@ -24,20 +25,61 @@ class FridaInterface {
       await this.script.load();
       this.ready = true;
       this.script.message.connect(async (data) => {
-        let response = await this.receive(data.payload);
-        handler(response);
+        console.log(data);
+        try {
+          if (typeof data.payload.id !== "undefined") {
+            this.queue[data.payload.id] = data.payload.body;
+          } else {
+            console.log(data.payload);
+          }
+        } catch (error) {
+          console.log(error);
+        }
       });
     } catch (error) {
       throw error;
     }
   }
 
-  async send(data) {
-    this.script.post({ type: "control", body: data });
+  async send(data, { timeout = 20000, refresh = 200 } = {}) {
+    const msgId = this.newId();
+    this.script.post({ type: "control", payload: { id: msgId, script: data } });
+    return new Promise((resolve, reject) => {
+      let attempts = 0;
+      const requestInterval = setInterval(() => {
+        if (this.queue.hasOwnProperty(msgId)) {
+          let response = this.queue[msgId];
+          delete this.queue[msgId];
+          let index = this.ids.indexOf(msgId);
+          if (index !== -1) {
+            this.ids.splice(index, 1);
+          }
+          clearInterval(requestInterval);
+          resolve({ type: "response", body: response });
+        } else {
+          attempts++;
+          if (attempts * refresh >= timeout) {
+            resolve({ type: "response", body: "Request timed out" });
+          }
+        }
+      }, refresh);
+    });
   }
 
-  async receive(data) {
-    return new Promise();
+  newId() {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    while (true) {
+      let result = "";
+      for (let i = 0; i < 8; i++) {
+        result += characters.charAt(
+          Math.floor(Math.random() * characters.length)
+        );
+      }
+      if (!this.ids.includes(result)) {
+        return result;
+      }
+    }
   }
 }
 

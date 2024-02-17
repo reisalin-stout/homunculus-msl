@@ -1,5 +1,7 @@
 node_modules/
-app/bin/*
+app/bin/
+app/data/assets
 build/
-renderer/*
-saved/*/*
+renderer/
+saved/
+dev/helper/

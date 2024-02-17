@@ -1,27 +1,9 @@
 const express = require("express");
 const { spawn } = require("child_process");
-const { logic, tick, start, respondToClient } = require("./dev/logic.js");
+const { logic } = require("./dev/logic.js");
 const { initialize, log } = require("./dev/system.js");
-
-let messageIds = [];
-
-function newId() {
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  while (true) {
-    let result = "";
-    for (let i = 0; i < 8; i++) {
-      result += characters.charAt(
-        Math.floor(Math.random() * characters.length)
-      );
-    }
-    if (!messageIds.includes(result)) {
-      messageIds.push(result);
-      break;
-    }
-  }
-  return result;
-}
+const { startup } = require("./dev/emulator.js");
+const fs = require("fs");
 
 function render() {
   log("Starting rendering process");
@@ -37,6 +19,23 @@ function render() {
     await log("Application will close now, goodbye");
     process.exit();
   });
+}
+let adb = null;
+let frida = null;
+let logicCore = false;
+async function start() {
+  if (!logicCore) {
+    const [run, adbi, fridai] = await startup();
+    if (!run) {
+      log("logic core isn't running");
+      return;
+    }
+    adb = adbi;
+    frida = fridai;
+    logicCore = true;
+    log("Logic core running");
+    await frida.start("./dev/frida-inject.js");
+  }
 }
 
 async function main() {
@@ -54,7 +53,19 @@ async function main() {
 
     app.post("/app-controller", async (req, res) => {
       res.setHeader("Content-Type", "application/json");
-      const responseMessage = await logic(newId(), req.body);
+      const code = fs.readFileSync("./dev/findbyUid.js").toString();
+
+      const responseMessage = await frida.send(code);
+      console.log(responseMessage);
+      res.send(responseMessage);
+    });
+
+    app.post("/script-inject", async (req, res) => {
+      res.setHeader("Content-Type", "application/json");
+      const code = fs
+        .readFileSync(`./dev//inject/${req.body.name}.js`)
+        .toString();
+      const responseMessage = await frida.send(code);
       res.send(responseMessage);
     });
 
@@ -66,16 +77,15 @@ async function main() {
       respondToClient = (data) => {
         res.write(`data: ${data}\n`);
       };
-      /*
       const intervalId = setInterval(() => {
         (async () => {
-          const data = await tick();
+          const data = false;
           if (data != false) {
             res.write(`data: ${data}\n`);
           }
         })();
       }, global.MSLEAGUE.config.app.refresh);
-      */
+
       req.on("close", () => {
         clearInterval(intervalId);
       });

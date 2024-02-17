@@ -12,5 +12,12 @@
     "name": "additional-bin-win64-1.0.0.tgz",
     "path": "app/bin",
     "depth": 2
+  },
+  "assets": {
+    "version": "1.0.0",
+    "url": "https://dl.dropboxusercontent.com/scl/fi/ikaasf3zxpdw1m2vrhdfa/additional-bin-win64-1.0.0.tgz?rlkey=bcm4lwmp2ivu3mvhwmfqdnorh&dl=1",
+    "name": "additional-bin-win64-1.0.0.tgz",
+    "path": "app/data/assets",
+    "depth": 2
   }
 }

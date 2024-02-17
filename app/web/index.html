@@ -16,27 +16,18 @@
     >
       Screenshot
     </button>
-    <button
-      class="button"
-      id="frida-inject"
-      onclick="appListener.command(this.id)"
-    >
-      Inject
-    </button>
+
     <button
       class="button"
       id="find-region"
-      onclick="appListener.command(this.id)"
+      onclick="appListener.script('findbyUid')"
     >
       Find Region
     </button>
-    <button class="button" id="load" onclick="appListener.command(this.id)">
-      Load
-    </button>
-    <a href="./astromondump.json">JSON</a>
 
     <!--<button id="memory-dump" onclick="loadFile()">Memory</button>-->
-    <div id="content">MyDiv</div>
+    <div class="astromon-grid-container" id="content"></div>
+
     <table
       style="
         border-collapse: collapse;

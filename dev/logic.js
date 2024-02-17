@@ -117,25 +117,9 @@ async function tick() {
   return data;
 }
 
-async function start() {
-  if (!logicCore) {
-    const [run, adbi, fridai] = await startup();
-    if (!run) {
-      log("logic core isn't running");
-      return;
-    }
-    adb = adbi;
-    frida = fridai;
-    logicCore = true;
-    log("Logic core running");
-    await frida.start("./dev/frida-inject.js", handler);
-  }
-}
-
 module.exports = {
   logic,
   tick,
-  start,
   handler,
   respondToClient,
 };

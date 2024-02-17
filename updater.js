@@ -1,8 +1,7 @@
-const { create } = require("domain");
 const fs = require("fs");
 const fsp = require("fs/promises");
 const https = require("https");
-const { c, x, list } = require("tar");
+const { c, x } = require("tar");
 
 function download(url, filename, destination, depth) {
   return new Promise((resolve, reject) => {
@@ -75,6 +74,7 @@ async function createFolders(paths) {
 
 const folders = [
   "app/bin",
+  "app/data/assets",
   "saved",
   "saved/logs",
   "saved/out",
@@ -94,31 +94,3 @@ fs.readFile("update-list.json", async (err, data) => {
     );
   });
 });
-/*
-// Example usage
-const downloadUrl = 'https://example.com/example.tar.gz';
-const downloadDestination = 'downloads';
-const tarGzFile = 'example.tar.gz';
-const unpackDestination = 'unpacked';
-const sourceFolder = 'folder_to_bundle';
-
-// Download the tar.gz file
-download(downloadUrl, downloadDestination, tarGzFile)
-    .then(() => {
-        console.log('Downloaded tar.gz file successfully');
-        // Unpack the tar.gz file
-        return unpack(`${downloadDestination}/${tarGzFile}`, unpackDestination);
-    })
-    .then(() => {
-        console.log('Unpacked tar.gz file successfully');
-        // Bundle a folder into a tar.gz file
-        return pack(sourceFolder, `${downloadDestination}/bundled.tar.gz`);
-    })
-    .then(() => {
-        console.log('Bundled folder into tar.gz file successfully');
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-
-    */

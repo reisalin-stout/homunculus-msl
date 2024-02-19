@@ -2,7 +2,7 @@
   "app": {
     "version": "1.0.0",
     "title": "Homunculus",
-    "icon": "app/web/favicon.ico",
+    "icon": "app/data/assets/favicons/wildfang.ico",
     "renderer": "./renderer/cef-renderer.exe",
     "port": 0,
     "refresh": 200

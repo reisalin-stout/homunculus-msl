@@ -4,4 +4,4 @@ app/data/assets
 build/
 renderer/
 saved/
-dev/helper/
+dev/utilities/

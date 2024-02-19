@@ -1,4 +1,3 @@
-let consolelog;
 let root;
 let appListener;
 
@@ -28,14 +27,14 @@ class AppListener {
     });
 
     Object.defineProperty(this, "script", {
-      value: async function (data) {
+      value: async function (data, options = {}) {
         const url = root + "script-inject";
         fetch(url, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name: data }),
+          body: JSON.stringify({ name: data, options: options }),
         })
           .then((response) => response.json())
           .then((result) => {
@@ -65,17 +64,7 @@ class AppListener {
   error(error) {}
 }
 
-function clog(msg) {
-  let inner = msg;
-  if (typeof msg === "object") {
-    inner = JSON.stringify(msg);
-  }
-  consolelog.innerHTML = consolelog.innerHTML + inner + "<br>";
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-  consolelog = document.getElementById("console");
   root = window.location.href;
   appListener = new AppListener();
-  clog(`Using ${root}`);
 });

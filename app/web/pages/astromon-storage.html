@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <button
+      class="button is-loading"
+      id="update-astromon-storage-button"
+      onclick="loadAllAstromon()"
+      disabled
+    >
+      Update
+    </button>
+    <button
+      class="button"
+      id="update-astromon-storage-button-2"
+      onclick="changeValues()"
+    >
+      Save Changes
+    </button>
+    <button
+      class="button"
+      id="update-astromon-storage-button-3"
+      onclick="changeSpeed()"
+    >
+      Change Speed (x8)
+    </button>
+    <button
+      class="button"
+      id="update-astromon-storage-button-3"
+      onclick="revertSpeed()"
+    >
+      Revert Speed
+    </button>
+    <p id="resulting-msg">No Message</p>
+    <div class="astromon-storage-container">
+      <div class="astromon-grid-container" id="astromon-grid-container"></div>
+      <div class="astromon-page-container" id="astromon-page-container">
+        <input type="number" id="value-field-astromon-level" />
+        <button id="edit-field-astromon-level" onclick="makeChange(this.id)">
+          level
+        </button>
+        <br />
+        <input type="number" id="value-field-astromon-attack" />
+        <button id="edit-field-astromon-attack" onclick="makeChange(this.id)">
+          attack
+        </button>
+        <br />
+        <input type="number" id="value-field-astromon-defense" />
+        <button id="edit-field-astromon-defense" onclick="makeChange(this.id)">
+          defense
+        </button>
+        <br />
+        <input type="number" id="value-field-astromon-recovery" />
+        <button id="edit-field-astromon-recovery" onclick="makeChange(this.id)">
+          recovery
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

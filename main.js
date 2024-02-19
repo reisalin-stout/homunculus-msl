@@ -65,7 +65,7 @@ async function main() {
       const code = fs
         .readFileSync(`./dev//inject/${req.body.name}.js`)
         .toString();
-      const responseMessage = await frida.send(code);
+      const responseMessage = await frida.send(code, req.body.options);
       res.send(responseMessage);
     });
 

@@ -1,66 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Fetch Example</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>Homunculus</title>
     <link rel="stylesheet" type="text/css" href="css/override.css" />
     <script src="app-interface.js"></script>
-    <script src="scripts.js"></script>
+    <script src="index.js"></script>
   </head>
   <body>
-    <p>Dump Memory</p>
-    <button
-      class="button"
-      id="adb-screenshot"
-      onclick="appListener.command(this.id)"
-    >
-      Screenshot
-    </button>
+    <header>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <div class="navbar-start">
+            <a class="button" onclick="loadDynamicContent('home')">Home</a>
+            <a class="button" onclick="loadDynamicContent('astromon-storage')"
+              >Storage</a
+            >
+          </div>
+          <div class="navbar-end">
+            <a class="button" onclick="location.reload()">Refresh</a>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-    <button
-      class="button"
-      id="find-region"
-      onclick="appListener.script('findbyUid')"
-    >
-      Find Region
-    </button>
-
-    <!--<button id="memory-dump" onclick="loadFile()">Memory</button>-->
-    <div class="astromon-grid-container" id="content"></div>
-
-    <table
-      style="
-        border-collapse: collapse;
-        width: 80%;
-        height: 600;
-        overflow: scroll;
-        border: 4px solid grey;
-        background-color: black;
-        color: white;
-      "
-    >
-      <thead>
-        <tr>
-          <th style="border: 2px solid grey; padding: 8px; text-align: left">
-            Console
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            style="
-              border: 2px solid grey;
-              padding: 8px;
-              height: 400;
-              vertical-align: top;
-              text-align: left;
-            "
-          >
-            <p id="console"></p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div id="content"></div>
   </body>
 </html>

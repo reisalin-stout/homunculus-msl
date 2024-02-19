@@ -41,9 +41,12 @@ class FridaInterface {
     }
   }
 
-  async send(data, { timeout = 20000, refresh = 200 } = {}) {
+  async send(data, options = {}, { timeout = 20000, refresh = 200 } = {}) {
     const msgId = this.newId();
-    this.script.post({ type: "control", payload: { id: msgId, script: data } });
+    this.script.post({
+      type: "control",
+      payload: { id: msgId, options: options, script: data },
+    });
     return new Promise((resolve, reject) => {
       let attempts = 0;
       const requestInterval = setInterval(() => {

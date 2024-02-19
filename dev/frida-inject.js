@@ -18,6 +18,13 @@ function toHex32(value, type, littleEndian = true) {
   return formattedValue;
 }
 
+Process.setExceptionHandler(onException);
+
+function onException(error) {
+  console.error("Exception:", error);
+  return true;
+}
+
 recv("control", (message) => {
   receiver(message.payload);
 });

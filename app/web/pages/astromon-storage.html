@@ -10,7 +10,7 @@
     <button
       class="button is-loading"
       id="update-astromon-storage-button"
-      onclick="loadAllAstromon()"
+      onclick="updateAstromonStorage()"
       disabled
     >
       Update
@@ -18,47 +18,38 @@
     <button
       class="button"
       id="update-astromon-storage-button-2"
-      onclick="changeValues()"
+      onclick="saveChanges()"
     >
       Save Changes
     </button>
-    <button
-      class="button"
-      id="update-astromon-storage-button-3"
-      onclick="changeSpeed()"
-    >
-      Change Speed (x8)
-    </button>
-    <button
-      class="button"
-      id="update-astromon-storage-button-3"
-      onclick="revertSpeed()"
-    >
-      Revert Speed
-    </button>
-    <p id="resulting-msg">No Message</p>
+
+    <input
+      type="range"
+      id="speed-slider"
+      min="0"
+      max="5"
+      value="0"
+      list="speed-slider-marks"
+    />
+    <datalist id="speed-slider-marks">
+      <option value="0"></option>
+      <option value="1"></option>
+      <option value="2"></option>
+      <option value="3"></option>
+      <option value="4"></option>
+      <option value="5"></option>
+    </datalist>
+
     <div class="astromon-storage-container">
       <div class="astromon-grid-container" id="astromon-grid-container"></div>
       <div class="astromon-page-container" id="astromon-page-container">
-        <input type="number" id="value-field-astromon-level" />
-        <button id="edit-field-astromon-level" onclick="makeChange(this.id)">
-          level
-        </button>
+        Level: <input type="number" id="value-field-astromon-level" />
         <br />
-        <input type="number" id="value-field-astromon-attack" />
-        <button id="edit-field-astromon-attack" onclick="makeChange(this.id)">
-          attack
-        </button>
+        Attack: <input type="number" id="value-field-astromon-attack" />
         <br />
-        <input type="number" id="value-field-astromon-defense" />
-        <button id="edit-field-astromon-defense" onclick="makeChange(this.id)">
-          defense
-        </button>
+        Defense: <input type="number" id="value-field-astromon-defense" />
         <br />
-        <input type="number" id="value-field-astromon-recovery" />
-        <button id="edit-field-astromon-recovery" onclick="makeChange(this.id)">
-          recovery
-        </button>
+        Recovery: <input type="number" id="value-field-astromon-recovery" />
       </div>
     </div>
   </body>

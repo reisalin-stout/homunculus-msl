@@ -1,8 +1,13 @@
 let astromonStorageContainerUpdateButton = null;
 let astromonInventory = null;
-let timerId = 0;
-document.addEventListener("subpage-load", async function () {
-  window.database = await fetch("database.json")
+let selectedAstromon = null;
+let container = null;
+
+let timerId = null;
+let speedPointer = null;
+
+async function loadDatasfromFiles() {
+  let db = await fetch("database.json")
     .then((response) => {
       if (!response.ok) {
       }
@@ -12,12 +17,139 @@ document.addEventListener("subpage-load", async function () {
       astromonStorageContainerUpdateButton = document.getElementById(
         "update-astromon-storage-button"
       );
-
       astromonStorageContainerUpdateButton.classList.remove("is-loading");
       astromonStorageContainerUpdateButton.disabled = false;
       return data;
     })
     .catch((error) => {});
+  return db;
+}
+
+// -- Read from game memory --
+
+function makeAstromonIcon(instance) {
+  let matchingAstromon = database.astromons.find(
+    (astromon) => astromon.uid === instance.monster_uid.value
+  );
+  matchingAstromon = matchingAstromon !== undefined ? matchingAstromon : null;
+
+  const container = document.getElementById("astromon-grid-container");
+
+  const astromonDiv = document.createElement("div");
+  astromonDiv.classList.add("astromon-portrait");
+  astromonDiv.id = instance.id.value;
+
+  const img1 = document.createElement("img");
+  img1.src = `assets/icons/${matchingAstromon.icon_name}`;
+  img1.alt = "Icon";
+  img1.classList.add("astromon-icon");
+  astromonDiv.appendChild(img1);
+
+  const img2 = document.createElement("img");
+  img2.src = `assets/items/portrait-element-${matchingAstromon.element}.png`;
+  img2.alt = "Element";
+  astromonDiv.appendChild(img2);
+
+  const img3 = document.createElement("img");
+  img3.src = `assets/items/portrait-evo-${matchingAstromon.evolution}.png`;
+  img3.alt = "Border";
+  astromonDiv.appendChild(img3);
+
+  container.appendChild(astromonDiv);
+}
+
+function loadAstromonStorage(storage) {
+  astromonInventory = storage.sort((a, b) => {
+    if (a.total_atk_sort.value !== b.total_atk_sort.value) {
+      return b.total_atk_sort.value - a.total_atk_sort.value;
+    } else {
+      return b.total_atk_sort.value - a.total_atk_sort.value;
+    }
+  });
+
+  for (let a = 0; a < astromonInventory.length; a++) {
+    let element = astromonInventory[a];
+    makeAstromonIcon(element);
+  }
+
+  astromonStorageContainerUpdateButton.classList.remove("is-loading");
+  astromonStorageContainerUpdateButton.disabled = false;
+}
+
+async function updateAstromonStorage() {
+  let userId = document.getElementById(
+    "update-astromon-storage-id-field"
+  ).valueAsNumber;
+  document.getElementById("astromon-grid-container").innerHTML = "";
+
+  astromonStorageContainerUpdateButton.classList.add("is-loading");
+  astromonStorageContainerUpdateButton.disabled = true;
+  appListener.script("findbyUid", { user_id: userId, uid_s: allUid });
+}
+// -- End --
+// -- Load and Write target Astromon data --
+function loadAstromonData(data) {
+  Object.keys(data).forEach((property) => {
+    const element = document.getElementById(`value-field-astromon-${property}`);
+    if (element && data[property] && typeof data[property].value === "number") {
+      element.value = Math.round(data[property].value);
+    }
+  });
+}
+
+function saveChanges() {
+  let astroChanges = [];
+  const elements = document.querySelectorAll('[id^="value-field-astromon-"]');
+
+  elements.forEach((element) => {
+    const fieldName = element.id.replace("value-field-astromon-", "");
+    const fieldData = selectedAstromon[fieldName];
+
+    const elementValue = element.valueAsNumber;
+    const roundedValue = Math.round(fieldData.value);
+    if (elementValue !== roundedValue) {
+      const payload = {
+        address_base: selectedAstromon.starting_add,
+        offset: fieldData.offset,
+        type: fieldData.type,
+        new_value: elementValue,
+      };
+      astroChanges.push(payload);
+    }
+  });
+
+  appListener.script("changeValues", { modifications: astroChanges });
+}
+// -- End --
+
+//Initialization
+document.addEventListener("subpage-load", async function () {
+  window.database = await loadDatasfromFiles();
+
+  container = document.getElementById("astromon-grid-container");
+  container.addEventListener("click", function (event) {
+    const clickedDiv = event.target.closest(".astromon-portrait");
+    const matchingData = astromonInventory.find(
+      (astromon) => astromon.id.value == clickedDiv.id
+    );
+    selectedAstromon = matchingData;
+    loadAstromonData(selectedAstromon);
+  });
+
+  const slider = document.getElementById("speed-slider");
+
+  slider.addEventListener("input", () => {
+    slider.disabled = true;
+    let speeds = [0, 2.5, 4, 6, 7, 8];
+    let resultSpeed = speeds[parseInt(slider.value)];
+    appListener.script("changeSpeed", {
+      game_speed: resultSpeed,
+      additional_options: {
+        address: speedPointer,
+        id: timerId,
+      },
+    });
+  });
 
   appListener.receiver = (object) => {
     switch (object.type) {
@@ -25,17 +157,28 @@ document.addEventListener("subpage-load", async function () {
         break;
     }
   };
+
   appListener.scriptResult = (data) => {
     switch (data.type) {
       case "astromon-inventory":
-        astromonInventory = data.body.sort((a, b) => {
-          if (a.total_atk_sort.value !== b.total_atk_sort.value) {
-            return b.total_atk_sort.value - a.total_atk_sort.value; // Sort by total_atk in descending order
-          } else {
-            // If total_atk is the same, sort by 'element'
-            return b.total_atk_sort.value - a.total_atk_sort.value; //return a.element.localeCompare(b.element);
-          }
-          /*public const MonsterStatType MsNone = 0;
+        loadAstromonStorage(data.body);
+        break;
+      case "value-changes":
+        document.getElementById("resulting-msg").innerHTML = data.body;
+        break;
+      case "speed-change":
+        slider.disabled = false;
+        timerId = data.body.timer;
+        speedPointer = data.body.address;
+        break;
+    }
+  };
+
+  appListener.tick = (delta) => {};
+  appListener.error = (error) => {};
+});
+
+/*public const MonsterStatType MsNone = 0;
 	public const MonsterStatType MsAttack = 1;
 	public const MonsterStatType MsDefence = 2;
 	public const MonsterStatType MsHeal = 3;
@@ -48,111 +191,6 @@ document.addEventListener("subpage-load", async function () {
 	public const MonsterStorageType MstExtendStorage3 = 3; // 0x0
 	public const MonsterStorageType MstWinkyStorage = 4; // 0x0
   */
-        });
-        for (let a = 0; a < astromonInventory.length; a++) {}
-        astromonInventory.forEach((element) => {
-          let astromonEntry = findAstromonData(element);
-          makeAstromonIcon(astromonEntry, element);
-        });
-        astromonStorageContainerUpdateButton.classList.remove("is-loading");
-        astromonStorageContainerUpdateButton.disabled = false;
-        break;
-      case "value-changes":
-        document.getElementById("resulting-msg").innerHTML = data.body;
-
-        break;
-      case "timer-id":
-        timerId = data.body;
-        break;
-    }
-  };
-
-  appListener.tick = (data) => {};
-  appListener.error = (error) => {};
-});
-
-async function loadAllAstromon() {
-  let userId = document.getElementById(
-    "update-astromon-storage-id-field"
-  ).valueAsNumber;
-  document.getElementById("astromon-grid-container").innerHTML = "";
-
-  astromonStorageContainerUpdateButton.classList.add("is-loading");
-  astromonStorageContainerUpdateButton.disabled = true;
-  appListener.script("findbyUid", { user_id: userId, uid_s: allUid });
-}
-//7901126
-function findAstromonData(astromonData) {
-  const matchingAstromon = database.astromons.find(
-    (astromon) => astromon.uid === astromonData.monster_uid.value
-  );
-  if (matchingAstromon) {
-    return matchingAstromon;
-  }
-  return null;
-}
-
-function makeAstromonIcon(constants, instance) {
-  const astroString = `
-  <div class="astromon-portrait" id=${instance.id.value}>
-  <img src="assets/icons/${constants.icon_name}" alt="Icon" class="astromon-icon">
-  <img src="assets/items/portrait-element-${constants.element}.png" alt="Element">
-  <img src="assets/items/portrait-evo-${constants.evolution}.png" alt="Border">
-</div>
-  `;
-  document.getElementById("astromon-grid-container").innerHTML += astroString;
-}
-
-const container = document.getElementById("astromon-grid-container");
-
-let selectedAstromon = null;
-
-container.addEventListener("click", function (event) {
-  const clickedDiv = event.target.closest(".astromon-portrait");
-
-  const matchingData = astromonInventory.find(
-    (astromon) => astromon.id.value == clickedDiv.id
-  );
-  const jsonString = JSON.stringify(matchingData, null, 2);
-  selectedAstromon = matchingData;
-  let index = 0;
-  const formattedString = jsonString.replace(/,/g, (match) => {
-    index++;
-    return index % 2 === 0 ? match : "<br>";
-  });
-  //document.getElementById("astromon-page-container").innerHTML = formattedString;
-});
-
-let astroChanges = [];
-
-function makeChange(id) {
-  let parsedId = id.replace(/^edit-field-astromon-/, "");
-
-  let newValue = document.getElementById(
-    `value-field-astromon-${parsedId}`
-  ).valueAsNumber;
-
-  const payload = {
-    address_base: selectedAstromon.starting_add,
-    offset: selectedAstromon[parsedId].offset,
-    type: selectedAstromon[parsedId].type,
-    new_value: newValue,
-  };
-  astroChanges.push(payload);
-}
-
-async function changeValues() {
-  appListener.script("changeValues", { modifications: astroChanges });
-  astroChanges = [];
-}
-
-async function changeSpeed() {
-  appListener.script("changeSpeed", { game_speed: 6.5, address: null });
-}
-
-async function revertSpeed() {
-  appListener.script("revertSpeed", { id: timerId });
-}
 
 const allUid = [
   513906150, 513906153, 513906152, 1772841661, 1772841658, 1772841659,

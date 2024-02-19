@@ -3,6 +3,7 @@ let appListener;
 
 class AppListener {
   constructor() {
+    this.lastFrameTime = null;
     Object.defineProperty(this, "command", {
       value: async function (data) {
         const url = root + "app-controller";
@@ -59,7 +60,19 @@ class AppListener {
 
   receiver(object) {}
 
-  tick(data) {}
+  tick(delta) {}
+
+  _tickExec = () => {
+    const currentTime = performance.now();
+    const elapsedTime = this.lastFrameTime
+      ? currentTime - this.lastFrameTime
+      : 0;
+
+    this.tick(Math.round(elapsedTime * 10) / 10);
+    this.lastFrameTime = currentTime;
+
+    requestAnimationFrame(this._tickExec);
+  };
 
   error(error) {}
 }
@@ -67,4 +80,5 @@ class AppListener {
 document.addEventListener("DOMContentLoaded", function () {
   root = window.location.href;
   appListener = new AppListener();
+  appListener._tickExec();
 });

@@ -6,7 +6,6 @@ function findSpeed() {
   try {
     for (let i = 0; i < ranges.length; i++) {
       const range = ranges[i];
-
       const result = Memory.scanSync(range.base, range.size, field_to_hex);
       if (result.length > 0) {
         for (let r = 0; r < result.length; r++) {
@@ -28,35 +27,36 @@ function findSpeed() {
   }
 }
 
-function changeSpeed(game_speed, address) {
-  try {
-    let speed_target;
-    if (!address) {
-      speed_target = findSpeed();
-    } else {
-      speed_target = ptr(address);
-    }
-    if (speed_target) {
-      var intervalId = setInterval(function () {
-        speed_target.writeFloat(game_speed);
-      }, 15);
-      send(`id: ${intervalId}`);
+function changeSpeed(game_speed, { address = null, id = null } = {}) {
+  let speed_target = null;
 
-      return {
-        type: "timer-id",
-        body: intervalId,
-      };
-    }
-  } catch (error) {}
+  if (id) {
+    clearInterval(id);
+  }
+  if (address) {
+    speed_target = ptr(address);
+  } else {
+    speed_target = findSpeed();
+  }
+
+  if (speed_target) {
+    var intervalId = setInterval(function () {
+      speed_target.writeFloat(game_speed);
+      if (game_speed == 0) {
+        speed_target.writeFloat(1);
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    }, 15);
+  }
+
+  return {
+    type: "speed-change",
+    body: {
+      timer: intervalId,
+      address: speed_target,
+    },
+  };
 }
 
-Process.setExceptionHandler(onException);
-
-function checkAddress(entry) {}
-
-function onException(error) {
-  console.error("Exception:", error);
-  return true;
-}
-
-changeSpeed(injected_options.game_speed, injected_options.address);
+changeSpeed(injected_options.game_speed, injected_options.additional_options);

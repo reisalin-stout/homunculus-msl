@@ -46,6 +46,25 @@
   color: aliceblue;
 }
 
+#speed-slider {
+  width: 120px;
+  cursor: pointer;
+}
+
+#speed-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 5px;
+  background: linear-gradient(
+    to right,
+    green 0%,
+    green 58%,
+    orange 58%,
+    orange 80%,
+    red 80%,
+    red 100%
+  );
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 100%;

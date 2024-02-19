@@ -63,6 +63,7 @@ document.addEventListener("subpage-load", async function () {
         break;
       case "timer-id":
         timerId = data.body;
+        break;
     }
   };
 

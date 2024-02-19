@@ -71,13 +71,16 @@ document.addEventListener("subpage-load", async function () {
 });
 
 async function loadAllAstromon() {
+  let userId = document.getElementById(
+    "update-astromon-storage-id-field"
+  ).valueAsNumber;
   document.getElementById("astromon-grid-container").innerHTML = "";
 
   astromonStorageContainerUpdateButton.classList.add("is-loading");
   astromonStorageContainerUpdateButton.disabled = true;
-  appListener.script("findbyUid", { user_id: 7901126, uid_s: allUid });
+  appListener.script("findbyUid", { user_id: userId, uid_s: allUid });
 }
-
+//7901126
 function findAstromonData(astromonData) {
   const matchingAstromon = database.astromons.find(
     (astromon) => astromon.uid === astromonData.monster_uid.value
@@ -126,7 +129,7 @@ function makeChange(id) {
 
   let newValue = document.getElementById(
     `value-field-astromon-${parsedId}`
-  ).value;
+  ).valueAsNumber;
 
   const payload = {
     address_base: selectedAstromon.starting_add,

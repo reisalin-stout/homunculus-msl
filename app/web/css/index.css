@@ -1,3 +1,12 @@
+html,
+body {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .astromon-storage-container {
   display: grid;
   grid-template-columns: 336px 680px;
@@ -54,15 +63,7 @@
 #speed-slider::-webkit-slider-runnable-track {
   height: 8px;
   border-radius: 5px;
-  background: linear-gradient(
-    to right,
-    green 0%,
-    green 58%,
-    orange 58%,
-    orange 80%,
-    red 80%,
-    red 100%
-  );
+  background: linear-gradient(to right, green 0%, green 48%, orange 48%, orange 80%, red 80%, red 100%);
 }
 
 ::-webkit-scrollbar {

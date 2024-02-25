@@ -1,36 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <body>
-    <input
-      type="number"
-      id="update-astromon-storage-id-field"
-      placeholder="User ID"
-    />
-
-    <button
-      class="button is-loading"
-      id="update-astromon-storage-button"
-      onclick="updateAstromonStorage()"
-      disabled
-    >
+    <input type="number" id="update-astromon-storage-id-field" placeholder="User ID" />
+    <button class="button" onclick="pattern()">Pattern</button>
+    <button class="button is-loading" id="update-astromon-storage-button" onclick="updateAstromonStorage()" disabled>
       Update
     </button>
-    <button
-      class="button"
-      id="update-astromon-storage-button-2"
-      onclick="saveChanges()"
-    >
-      Save Changes
-    </button>
-
-    <input
-      type="range"
-      id="speed-slider"
-      min="0"
-      max="5"
-      value="0"
-      list="speed-slider-marks"
-    />
+    <button class="button" id="update-astromon-storage-button-2" onclick="saveChanges()">Save Changes</button>
+    <button class="button" id="update-astromon-storage-button-2" onclick="findGems()">Gems lookup</button>
+    <input type="range" id="speed-slider" min="0" max="5" value="0" list="speed-slider-marks" />
     <datalist id="speed-slider-marks">
       <option value="0"></option>
       <option value="1"></option>
@@ -43,6 +21,7 @@
     <div class="astromon-storage-container">
       <div class="astromon-grid-container" id="astromon-grid-container"></div>
       <div class="astromon-page-container" id="astromon-page-container">
+        <img src="assets/items/portrait-empty.png" id="display-field-astromon-icon" />
         Level: <input type="number" id="value-field-astromon-level" />
         <br />
         Attack: <input type="number" id="value-field-astromon-attack" />

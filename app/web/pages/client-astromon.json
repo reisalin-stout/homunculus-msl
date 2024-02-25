@@ -1,0 +1,190 @@
+{
+  "starting_add": "0x7ffdff356018",
+  "id": { "offset": 0, "type": "dword", "value": 738376877 },
+  "user_id": { "offset": 2, "type": "dword", "value": 7901126 },
+  "monster_uid": { "offset": 4, "type": "dword", "value": 1215861073 },
+  "level": { "offset": 5, "type": "dword", "value": 60 },
+  "attack": { "offset": 6, "type": "float", "value": 3391.3798828125 },
+  "defense": { "offset": 7, "type": "float", "value": 2070.239990234375 },
+  "recovery": { "offset": 8, "type": "float", "value": 2077.050048828125 },
+  "hp": { "offset": 10, "type": "double", "value": 28029.95951391667 },
+  "stat_type": { "offset": 12, "type": "dword", "value": 1 },
+  "variant": { "offset": 13, "type": "dword", "value": 2 },
+  "exp": { "offset": 14, "type": "dword", "value": 0 },
+  "gem_1_shape": { "offset": 15, "type": "dword", "value": 1 },
+  "gem_2_shape": { "offset": 16, "type": "dword", "value": 2 },
+  "gem_3_shape": { "offset": 17, "type": "dword", "value": 3 },
+  "gem_1_id": { "offset": 18, "type": "dword", "value": 1605378868 },
+  "gem_2_id": { "offset": 20, "type": "dword", "value": 1605390035 },
+  "gem_3_id": { "offset": 22, "type": "dword", "value": 1605419875 },
+  "grade": { "offset": 24, "type": "dword", "value": 6 },
+  "lock": { "offset": 25, "type": "bool", "value": true },
+  "created_timestamp": { "offset": 26, "type": "dword", "value": 1700834708 },
+  "variant_level": { "offset": 32, "type": "dword", "value": 0 },
+  "updated_timestamp": { "offset": 37, "type": "dword", "value": 788618032 },
+  "storage_location": { "offset": 38, "type": "dword", "value": 0 },
+  "passive_books": { "offset": 39, "type": "dword", "value": 2 },
+  "active_books": { "offset": 40, "type": "dword", "value": 1 },
+  "costume_uid": { "offset": 41, "type": "dword", "value": 0 },
+  "trinket_1_id": { "offset": 42, "type": "dword", "value": 147942292 },
+  "trinket_2_id": { "offset": 44, "type": "dword", "value": 147784588 },
+  "trinket_3_id": { "offset": 46, "type": "dword", "value": 148028117 },
+  "enhancements": { "offset": 48, "type": "addr", "value": "0x7ffe022cd0c0" },
+  "total_atk_sort": {
+    "offset": 52,
+    "type": "float",
+    "value": 4690.51806640625
+  },
+  "super_ascension_skill": { "offset": 53, "type": "addr", "value": "0x0" },
+  "fixed_defense": { "offset": 55, "type": "float", "value": 0 },
+  "favorite": { "offset": 57, "type": "bool", "value": true },
+  
+  "uid": 1215861073,
+  "family_slug": "mona",
+  "family_name": "Mona",
+  "name": "Monarch",
+  "element": "dark",
+  "max_hp": 28030,
+  "max_attack": 3391,
+  "max_defence": 2070,
+  "max_recovery": 2077,
+  "icon_name": "MonarchD_large.png",
+  "icon_name_variant": "MonarchD_Special_large.png",
+  "born_grade": 4,
+  "evolution": 3,
+  "leader_skill": {
+    "uid": 978222523,
+    "name": "Fighting Spirit",
+    "description": "Increases allies' attack power by 30%.",
+    "icon_name": "se_leaderbuffattack.png"
+  },
+  "default_skill": {
+    "uid": 661539363,
+    "name": "Morale Boost",
+    "description": "Grants a 100% chance to restore 30% of own SP when attacking.",
+    "icon_name": "se_selfhealmympbypercentfrommaxmp.png"
+  },
+  "active_skill": {
+    "uid": 1347356368,
+    "name": "Hunter",
+    "description": "Increases critical hit damage by 30%.",
+    "icon_name": "se_selfbuffcriticaldamage.png"
+  },
+  "ultimate_skill": null
+}
+
+
+
+	public const RuneEffectType RetNone = 0; // 0x0
+	public const RuneEffectType RetAddAttack = 1; // 0x0
+	public const RuneEffectType RetAddAttackPercent = 2; // 0x0
+	public const RuneEffectType RetAddDefence = 3; // 0x0
+	public const RuneEffectType RetAddDefencePercent = 4; // 0x0
+	public const RuneEffectType RetAddHeal = 5; // 0x0
+	public const RuneEffectType RetAddHealPercent = 6; // 0x0
+	public const RuneEffectType RetAddHp = 7; // 0x0
+	public const RuneEffectType RetAddHpPercent = 8; // 0x0
+	public const RuneEffectType RetAddCriticalDamagePercent = 9; // 0x0
+	public const RuneEffectType RetAddCriticalProbPercent = 10; // 0x0
+	public const RuneEffectType RetAddStatusEffectResistancePercent = 11; // 0x0
+	public const RuneEffectType RetAddStatusCriticalResistancePercent = 12; // 0x0
+
+
+    public sealed class MsgRuneOptionalEffect : IMessage`1, IMessage, IEquatable`1, IDeepCloneable`1
+{
+	// Fields
+	private static readonly MessageParser`1 _parser; // 0x0
+	private UnknownFieldSet _unknownFields; // 0x10
+	public const Int32 UidFieldNumber; // 0x0
+	private UInt32 uid_; // 0x18
+	public const Int32 RareFieldNumber; // 0x0
+	private UInt32 rare_; // 0x1c
+	public const Int32 NameFieldNumber; // 0x0
+	private UInt32 name_; // 0x20
+	public const Int32 TypeFieldNumber; // 0x0
+	private RuneEffectType type_; // 0x24
+	public const Int32 ElementFieldNumber; // 0x0
+	private MonsterElementType element_; // 0x28
+	public const Int32 ProbFieldNumber; // 0x0
+	private Single prob_; // 0x2c
+	public const Int32 VFloatFieldNumber; // 0x0
+	private Single vFloat_; // 0x30
+	public const Int32 VIntFieldNumber; // 0x0
+	private Int32 vInt_; // 0x34
+
+	// Properties
+	public static MessageParser`1 Parser { get; }
+	public static MessageDescriptor Descriptor { get; }
+	private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
+	public UInt32 Uid { get; set; }
+	public UInt32 Rare { get; set; }
+	public UInt32 Name { get; set; }
+	public RuneEffectType Type { get; set; }
+	public MonsterElementType Element { get; set; }
+	public Single Prob { get; set; }
+	public Single VFloat { get; set; }
+	public Int32 VInt { get; set; }
+
+    public enum MonsterRuneColor
+{
+	// Fields
+	public Int32 value__; // 0x10
+	public const MonsterRuneColor MrcNone = 0; // 0x0
+	public const MonsterRuneColor MrcRed = 1; // 0x0
+	public const MonsterRuneColor MrcOrange = 2; // 0x0
+	public const MonsterRuneColor MrcYellow = 3; // 0x0
+	public const MonsterRuneColor MrcGreen = 4; // 0x0
+	public const MonsterRuneColor MrcBlue = 5; // 0x0
+	public const MonsterRuneColor MrcPurple = 6; // 0x0
+	public const MonsterRuneColor MrcWhite = 7; // 0x0
+	public const MonsterRuneColor MrcEmarald = 8; // 0x0
+	public const MonsterRuneColor MrcScarlet = 9; // 0x0
+	public const MonsterRuneColor MrcLightgreen = 10; // 0x0
+	public const MonsterRuneColor MrcPink = 11; // 0x0
+	public const MonsterRuneColor MrcHealmyhp = 12; // 0x0
+	public const MonsterRuneColor MrcHealmymp = 13; // 0x0
+	public const MonsterRuneColor MrcInchp = 14; // 0x0
+	public const MonsterRuneColor MrcIncmp = 15; // 0x0
+	public const MonsterRuneColor MrcShield = 16; // 0x0
+	public const MonsterRuneColor MrcStun = 17; // 0x0
+	public const MonsterRuneColor MrcIncBlueDecOrange = 18; // 0x0
+	public const MonsterRuneColor MrcIncOrangeDecBlue = 19; // 0x0
+	public const MonsterRuneColor MrcIncGreenDecBlue = 20; // 0x0
+	public const MonsterRuneColor MrcIncRedDecYellow = 21; // 0x0
+	public const MonsterRuneColor MrcIncYellowDecRed = 22; // 0x0
+	public const MonsterRuneColor MrcIncRedIncGreen = 23; // 0x0
+	public const MonsterRuneColor MrcIncBlueIncPurple = 24; // 0x0
+	public const MonsterRuneColor MrcIncOrangeIncYellow = 25; // 0x0
+	public const MonsterRuneColor MrcIncWhiteIncOrange = 26; // 0x0
+	public const MonsterRuneColor MrcIncYellowIncRed = 27; // 0x0
+	public const MonsterRuneColor MrcClearDebuff = 28; // 0x0
+	public const MonsterRuneColor MrcHealDisable = 29; // 0x0
+	public const MonsterRuneColor MrcIgnoreCriticalResistance = 30; // 0x0
+	public const MonsterRuneColor MrcAccuracy = 31; // 0x0
+	public const MonsterRuneColor MrcImmune = 32; // 0x0
+	public const MonsterRuneColor MrcReduceDamage = 33; // 0x0
+
+	// Properties
+
+	// Methods
+}
+
+// Dll : Assembly-CSharp.dll
+// Namespace: 
+public enum RuneEffectType
+{
+	// Fields
+	public Int32 value__; // 0x10
+	public const RuneEffectType RetNone = 0; // 0x0
+	public const RuneEffectType RetAddAttack = 1; // 0x0
+	public const RuneEffectType RetAddAttackPercent = 2; // 0x0
+	public const RuneEffectType RetAddDefence = 3; // 0x0
+	public const RuneEffectType RetAddDefencePercent = 4; // 0x0
+	public const RuneEffectType RetAddHeal = 5; // 0x0
+	public const RuneEffectType RetAddHealPercent = 6; // 0x0
+	public const RuneEffectType RetAddHp = 7; // 0x0
+	public const RuneEffectType RetAddHpPercent = 8; // 0x0
+	public const RuneEffectType RetAddCriticalDamagePercent = 9; // 0x0
+	public const RuneEffectType RetAddCriticalProbPercent = 10; // 0x0
+	public const RuneEffectType RetAddStatusEffectResistancePercent = 11; // 0x0
+	public const RuneEffectType RetAddStatusCriticalResistancePercent = 12; // 0x0

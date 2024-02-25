@@ -13,7 +13,7 @@
   "variables": {
     "package_name": "com.ftt.msleague_gl",
     "game_pid": "",
-    "device_model": "FRIDADEV",
+    "device_model": "SM-S908N",
     "device_id": "",
     "storage_path": "/data/local/tmp/"
   },

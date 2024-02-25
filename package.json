@@ -4,18 +4,24 @@
   "description": "Monster Super League Assistant",
   "type": "commonjs",
   "main": "main.js",
+  "bin": "main.js",
   "engines": {
     "node": "18.19.0",
     "npm": ">=6.0.0"
   },
   "scripts": {
     "start": "node .",
-    "build": "pkg --target latest-win-x64 main.js --config package.json --output Homunculus",
-    "buildscript": "node packager.js",
-    "update": "npm install && node updater.js"
+    "build": "node packager.js && pkg package.json"
   },
   "pkg": {
-    "assets": "dev/**/*"
+    "scripts": "dev/*.js",
+    "assets": [
+      "node_modules/**/*"
+    ],
+    "targets": [
+      "node18-win-x64"
+    ],
+    "outputPath": "build/Homunculus"
   },
   "keywords": [],
   "author": "",

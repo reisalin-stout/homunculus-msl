@@ -3,6 +3,8 @@ const { spawn } = require("child_process");
 const { logic } = require("./dev/logic.js");
 const { initialize, log } = require("./dev/system.js");
 const { startup } = require("./dev/emulator.js");
+//const { updateFiles } = require("./dev/updater.js");
+
 const fs = require("fs");
 
 function render() {
@@ -34,7 +36,7 @@ async function start() {
     frida = fridai;
     logicCore = true;
     log("Logic core running");
-    await frida.start("./dev/frida-inject.js");
+    await frida.start("./app/bin/frida/frida-inject.js");
   }
 }
 
@@ -51,20 +53,9 @@ async function main() {
 
     await start();
 
-    app.post("/app-controller", async (req, res) => {
-      res.setHeader("Content-Type", "application/json");
-      const code = fs.readFileSync("./dev/findbyUid.js").toString();
-
-      const responseMessage = await frida.send(code);
-      console.log(responseMessage);
-      res.send(responseMessage);
-    });
-
     app.post("/script-inject", async (req, res) => {
       res.setHeader("Content-Type", "application/json");
-      const code = fs
-        .readFileSync(`./dev//inject/${req.body.name}.js`)
-        .toString();
+      const code = fs.readFileSync(`./app/inject/${req.body.name}.js`).toString();
       const responseMessage = await frida.send(code, req.body.options);
       res.send(responseMessage);
     });
@@ -93,9 +84,7 @@ async function main() {
 
     const server = app.listen(0, () => {
       global.MSLEAGUE.config.app.port = server.address().port;
-      log(
-        `Local server listening at address http://127.0.0.1:${global.MSLEAGUE.config.app.port}`
-      );
+      log(`Local server listening at address http://127.0.0.1:${global.MSLEAGUE.config.app.port}`);
       render();
     });
   } catch (error) {

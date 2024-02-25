@@ -25,7 +25,6 @@ class FridaInterface {
       await this.script.load();
       this.ready = true;
       this.script.message.connect(async (data) => {
-        console.log(data);
         try {
           if (typeof data.payload.id !== "undefined") {
             this.queue[data.payload.id] = data.payload.body;
@@ -70,14 +69,11 @@ class FridaInterface {
   }
 
   newId() {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     while (true) {
       let result = "";
       for (let i = 0; i < 8; i++) {
-        result += characters.charAt(
-          Math.floor(Math.random() * characters.length)
-        );
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
       }
       if (!this.ids.includes(result)) {
         return result;

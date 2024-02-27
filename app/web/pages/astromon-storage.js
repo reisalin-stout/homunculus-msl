@@ -83,6 +83,7 @@ function loadAstromonStorage(storage) {
     temporaryStorage.push({ instance: instance_data, constant: constant_data });
     makeAstromonIcon(instance_data);
   }
+
   //document.getElementById("astromon-page-container").innerHTML = JSON.stringify(temporaryStorage[0].instance);
   //document.getElementById("astromon-page-container").innerHTML += JSON.stringify(temporaryStorage[0].constant);
   astromonStorageContainerUpdateButton.classList.remove("is-loading");
@@ -115,8 +116,8 @@ function saveChanges() {
   elements.forEach((element) => {
     const fieldName = element.id.replace("value-field-astromon-", "");
     const fieldData = selectedAstromon[fieldName];
+    const elementValue = parseInt(element.value, 10);
 
-    const elementValue = element.valueAsNumber;
     const roundedValue = Math.round(fieldData.value);
     if (elementValue !== roundedValue) {
       const payload = {
@@ -158,6 +159,14 @@ document.addEventListener("subpage-load", async function () {
         id: timerId,
       },
     });
+  });
+
+  const dropdownAstroList = document.getElementById("value-field-astromon-uid");
+  window.database.astromons.forEach((mon) => {
+    const option = document.createElement("option");
+    option.value = mon.uid;
+    option.textContent = `${mon.name} - ${mon.element} - Evo ${mon.evolution}`;
+    dropdownAstroList.appendChild(option);
   });
 
   appListener.receiver = (object) => {
